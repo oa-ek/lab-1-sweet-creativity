@@ -15,6 +15,6 @@ namespace SweetCreativity.Core.Entities
         public int Id { get; set; }
         public string NameCategory { get; set; }
 
-        public virtual ICollection<Listing> listings { get; set; }  // одна категорія може мати багато оголошень
+        public virtual ICollection<Listing> Listings { get; set; }  // одна категорія може мати багато оголошень
     }
 }
