@@ -1,12 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SweetCreativity.Core.Entities
 {
-    internal class Listing
+    public class Listing
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Title { get; set; }
+        //public string ImageListing { get; set; } //?
+        public string Description { get; set; }
+        public string Product { get; set; }
+        public DateTime CreatedAtListing { get; set; } //?
+        public string Location { get; set; }
+        public decimal Price { get; set; }
+        //public User UserId { get; set; } //??????
+        public int Weight { get; set; }
+
+        public User UserId { get; set; } //з таблички юзер витягується юзкр id
+        public Category CategoryId { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<ListingImage> ListingImages { get; set; }
+        public virtual ICollection<Response> Responses { get; set; }
     }
 }
