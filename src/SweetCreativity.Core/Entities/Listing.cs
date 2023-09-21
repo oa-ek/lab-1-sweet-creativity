@@ -23,8 +23,10 @@ namespace SweetCreativity.Core.Entities
         //public User UserId { get; set; } //??????
         public int Weight { get; set; }
 
-        public User UserId { get; set; } //з таблички юзер витягується юзкр id
-        public Category CategoryId { get; set; }
+        public virtual User? User { get; set; } //з таблички юзер витягується юзкр id
+        public int? UserId { get; set; }
+        public virtual Category? Category { get; set; }
+        public int? CategoryId { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<ListingImage> ListingImages { get; set; }
         public virtual ICollection<Response> Responses { get; set; }

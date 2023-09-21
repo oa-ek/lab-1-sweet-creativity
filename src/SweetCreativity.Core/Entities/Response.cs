@@ -16,8 +16,11 @@ namespace SweetCreativity.Core.Entities
         public string TextResponse { get; set; }
         public DateTime CreatedAtResponse { get; set; }
 
-        public User UserId { get; set; }
-        public Listing ListingId { get; set; }
-        public Rating RatingId { get; set; }
+        public virtual User? User { get; set; }
+        public int? UserId { get; set; }
+        public virtual Listing? Listing { get; set; }
+        public int? ListingId { get; set; }
+        //public Rating RatingId { get; set; }
+
     }
 }

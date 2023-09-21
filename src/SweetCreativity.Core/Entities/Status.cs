@@ -14,7 +14,7 @@ namespace SweetCreativity.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public bool IsComplicted { get; set; }
-
+        [InverseProperty("Status")]
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -17,8 +17,14 @@ namespace SweetCreativity.Core.Entities
         public decimal TotalPrice { get; set; }
         public DateTime CreatedAtOrder { get; set; }
 
-        public User UserId { get; set; }
-        public Listing ListingId { get; set; }
-        public Status StatusId { get; set; } //?
+        public virtual User? User { get; set; }
+       public int? UserId { get; set; }
+        public virtual Listing? Listing { get; set; }
+        public int? ListingId { get; set; }
+
+        [ForeignKey("StatusId")]
+
+        public virtual Status? Status { get; set; }
+        public int? StatusId { get; set; }//?
     }
 }

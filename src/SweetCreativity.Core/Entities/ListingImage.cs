@@ -15,6 +15,7 @@ namespace SweetCreativity.Core.Entities
         public int Id { get; set; }
         public string ImagePath { get; set; }
 
-        public Listing Listings { get; set; }
+        public virtual Listing? Listing { get; set; }
+        public int? ListingId { get; set; }
     }
 }

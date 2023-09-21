@@ -15,7 +15,10 @@ namespace SweetCreativity.Core.Entities
         public int Id { get; set; }
         public string RatingPoint { get; set; }
 
-        public User UserId { get; set; }
-        public Response ResponseId { get; set; }
+        public int? UserId { get; set; }
+        public virtual User? User { get; set; }
+
+        //public int ResponseId { get; set; }
+        //public Response ResponseId { get; set; }
     }
 }

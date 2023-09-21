@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SweetCreativity.Core.Entities;
 
 namespace SweetCreativity.WebApp.Data;
 
-public class SweetCreativityContext : IdentityDbContext
+public class SweetCreativityContext : DbContext
 {
     public SweetCreativityContext(DbContextOptions<SweetCreativityContext> options)
         : base(options)
@@ -21,28 +20,34 @@ public class SweetCreativityContext : IdentityDbContext
     public DbSet<Rating> Ratings => Set<Rating>();
     public DbSet<ListingImage> ListingImages => Set<ListingImage>();
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //{
-        //optionsBuilder.UseSqlServer("Server=.;Database=SweetCreativityDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
-       // base.OnConfiguring(optionsBuilder);
-   // }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Listing>()
-        .HasOne(l => l.UserId)  // Кожен Listing належить одному User
-        .WithMany(u => u.Listings)  // У User може бути багато Listings
-        .HasForeignKey(l => l.UserId);  // Зовнішній ключ у таблиці Listings
+       base.OnModelCreating(builder);
 
         builder.Entity<Listing>()
-    .HasOne(l => l.CategoryId)  // Кожен Listing належить одній Category
+        .HasOne(l => l.User)  // Кожен Listing належить одному User
+        .WithMany(u => u.Listings)  // У User може бути багато Listings
+        .HasForeignKey(l => l.UserId)
+        .OnDelete(DeleteBehavior.Cascade);   // Зовнішній ключ у таблиці Listings
+
+        builder.Entity<Listing>()
+    .HasOne(l => l.Category)  // Кожен Listing належить одній Category
     .WithMany(c => c.Listings)  // У Category може бути багато Listings
-    .HasForeignKey(l => l.CategoryId);  // Зовнішній ключ у таблиці Listings
+    .HasForeignKey(l => l.CategoryId)
+    .OnDelete(DeleteBehavior.Cascade);  // Зовнішній ключ у таблиці Listings
 
         builder.Entity<Order>()
-    .HasOne(o => o.StatusId)  // Кожен Order має один Status
-    .WithMany()  // У Status може бути багато Orders
-    .HasForeignKey(o => o.StatusId);  // Зовнішній ключ у таблиці Orders
+    .HasOne(o => o.Status)  // Кожен Order має один Status
+    .WithMany(o => o.Orders) // У Status може бути багато Orders
+    .HasForeignKey(o => o.StatusId)
+    .OnDelete(DeleteBehavior.Cascade);// Зовнішній ключ у таблиці Orders
+
+       builder.Entity<Order>()
+   .HasOne(o => o.User)  // Кожен Order має один Status
+   .WithMany(o => o.Orders) // У Status може бути багато Orders
+   .HasForeignKey(o => o.UserId)
+   .OnDelete(DeleteBehavior.NoAction);// Зовнішній ключ у таблиці Orders
 
         builder.Entity<User>()
     .Property(u => u.Email)
@@ -54,8 +59,6 @@ public class SweetCreativityContext : IdentityDbContext
     .HasIndex(c => c.NameCategory)
     .IsUnique();
 
-
-        base.OnModelCreating(builder);
     }
 
 
