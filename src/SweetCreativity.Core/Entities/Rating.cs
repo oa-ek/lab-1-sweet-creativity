@@ -16,6 +16,10 @@ namespace SweetCreativity.Core.Entities
         public string RatingPoint { get; set; }
 
         public User UserId { get; set; }
-        public Response ResponseId { get; set; }
+        //public Response ResponseId { get; set; }
+        [ForeignKey("ResponseId")] // Вказуємо, що ResponseId є зовнішнім ключем
+        public Response Response { get; set; }
+
+
     }
 }

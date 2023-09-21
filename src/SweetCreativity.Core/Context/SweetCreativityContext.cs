@@ -39,7 +39,8 @@ public class SweetCreativityContext : IdentityDbContext
     .WithMany(c => c.Listings)  // У Category може бути багато Listings
     .HasForeignKey(l => l.CategoryId);  // Зовнішній ключ у таблиці Listings
 
-        builder.Entity<Order>()
+
+     builder.Entity<Order>()
     .HasOne(o => o.StatusId)  // Кожен Order має один Status
     .WithMany()  // У Status може бути багато Orders
     .HasForeignKey(o => o.StatusId);  // Зовнішній ключ у таблиці Orders

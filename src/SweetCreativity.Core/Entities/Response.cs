@@ -18,6 +18,9 @@ namespace SweetCreativity.Core.Entities
 
         public User UserId { get; set; }
         public Listing ListingId { get; set; }
-        public Rating RatingId { get; set; }
+        //public Rating RatingId { get; set; }
+        // Зовнішній ключ для відносини
+        public int RatingId { get; set; }
+        public Rating Rating { get; set; }
     }
 }
