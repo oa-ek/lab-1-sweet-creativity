@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace SweetCreativity.Core.Migrations
 {
     /// <inheritdoc />
@@ -185,6 +187,25 @@ namespace SweetCreativity.Core.Migrations
                         principalTable: "Users",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "NameCategory" },
+                values: new object[,]
+                {
+                    { 1, "Бісквітні торти" },
+                    { 2, "Вафельні торти" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Email", "FullName", "Password", "PhoneNumber", "UrlSocialnetwork", "UserName" },
+                values: new object[] { 1, "taniabondar@gmail.com", "Тетяна Бондар", "2.0taniab", 985674335, "@taniabondar23", "Тетяна2.0" });
+
+            migrationBuilder.InsertData(
+                table: "Listings",
+                columns: new[] { "Id", "CategoryId", "CreatedAtListing", "Description", "Location", "Price", "Product", "Title", "UserId", "Weight" },
+                values: new object[] { 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165m, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_NameCategory",

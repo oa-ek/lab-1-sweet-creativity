@@ -12,7 +12,7 @@ using SweetCreativity.WebApp.Data;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20230921205031_Init")]
+    [Migration("20230927112324_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -43,6 +43,18 @@ namespace SweetCreativity.Core.Migrations
                         .IsUnique();
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NameCategory = "Бісквітні торти"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NameCategory = "Вафельні торти"
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
@@ -91,6 +103,21 @@ namespace SweetCreativity.Core.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Listings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
+                            Location = "Lviv",
+                            Price = 165m,
+                            Product = "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).",
+                            Title = "Торт Наполеон",
+                            UserId = 1,
+                            Weight = 0
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.ListingImage", b =>
@@ -256,6 +283,18 @@ namespace SweetCreativity.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "taniabondar@gmail.com",
+                            FullName = "Тетяна Бондар",
+                            Password = "2.0taniab",
+                            PhoneNumber = 985674335,
+                            UrlSocialnetwork = "@taniabondar23",
+                            UserName = "Тетяна2.0"
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
