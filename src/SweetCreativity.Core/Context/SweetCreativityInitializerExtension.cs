@@ -28,6 +28,16 @@ namespace SweetCreativity.Core.Context
                     FullName = "Тетяна Бондар",
                     PhoneNumber = 0985674335,
                     UrlSocialnetwork = "@taniabondar23"
+                },
+                new User
+                {
+                    Id = 2,
+                    UserName = "ОленаT",
+                    Email = "olenatkachuk@gmail.com",
+                    Password = "123olenatt",
+                    FullName = "Олена Ткачук",
+                    PhoneNumber = 0986390482,
+                    UrlSocialnetwork = "@olena_tkachuk"
                 }
                 );
         }
@@ -37,14 +47,28 @@ namespace SweetCreativity.Core.Context
                  new Category
                  {
                      Id = 1,
-                     NameCategory = "Бісквітні торти"
+                     NameCategory = "Торти"
                  },
                   new Category
                   {
                       Id = 2,
-                      NameCategory = "Вафельні торти"
+                      NameCategory = "Тістечка"
+                  },
+                  new Category
+                  {
+                      Id = 3,
+                      NameCategory = "Цукерки"
+                  },
+                  new Category
+                  {
+                      Id = 4,
+                      NameCategory = "Печиво"
+                  },
+                  new Category
+                  {
+                      Id = 5,
+                      NameCategory = "Вафлі"
                   }
-
                  );
         }
         static void seedListing(ModelBuilder builder)
@@ -60,6 +84,19 @@ namespace SweetCreativity.Core.Context
                   CategoryId = 1,
                   UserId = 1,
                   Price = 165,
+                  Weight = 1000
+              },
+              new Listing
+              {
+                  Id = 2,
+                  Title = "Мафіни",
+                  Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
+                  Product = "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.",
+                  Location = "Rivne",
+                  CategoryId = 2,
+                  UserId = 2,
+                  Price = 18,
+                  Weight = 80
               }
                 );
         }

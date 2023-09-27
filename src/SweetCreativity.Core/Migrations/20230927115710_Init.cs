@@ -193,19 +193,30 @@ namespace SweetCreativity.Core.Migrations
                 columns: new[] { "Id", "NameCategory" },
                 values: new object[,]
                 {
-                    { 1, "Бісквітні торти" },
-                    { 2, "Вафельні торти" }
+                    { 1, "Торти" },
+                    { 2, "Тістечка" },
+                    { 3, "Цукерки" },
+                    { 4, "Печиво" },
+                    { 5, "Вафлі" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "FullName", "Password", "PhoneNumber", "UrlSocialnetwork", "UserName" },
-                values: new object[] { 1, "taniabondar@gmail.com", "Тетяна Бондар", "2.0taniab", 985674335, "@taniabondar23", "Тетяна2.0" });
+                values: new object[,]
+                {
+                    { 1, "taniabondar@gmail.com", "Тетяна Бондар", "2.0taniab", 985674335, "@taniabondar23", "Тетяна2.0" },
+                    { 2, "olenatkachuk@gmail.com", "Олена Ткачук", "123olenatt", 986390482, "@olena_tkachuk", "ОленаT" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Listings",
                 columns: new[] { "Id", "CategoryId", "CreatedAtListing", "Description", "Location", "Price", "Product", "Title", "UserId", "Weight" },
-                values: new object[] { 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165m, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 0 });
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165m, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 1000 },
+                    { 2, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.", "Rivne", 18m, "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.", "Мафіни", 2, 80 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_NameCategory",

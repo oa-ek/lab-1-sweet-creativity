@@ -45,12 +45,27 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 1,
-                            NameCategory = "Бісквітні торти"
+                            NameCategory = "Торти"
                         },
                         new
                         {
                             Id = 2,
-                            NameCategory = "Вафельні торти"
+                            NameCategory = "Тістечка"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NameCategory = "Цукерки"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NameCategory = "Печиво"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            NameCategory = "Вафлі"
                         });
                 });
 
@@ -113,7 +128,20 @@ namespace SweetCreativity.Core.Migrations
                             Product = "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).",
                             Title = "Торт Наполеон",
                             UserId = 1,
-                            Weight = 0
+                            Weight = 1000
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
+                            Location = "Rivne",
+                            Price = 18m,
+                            Product = "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.",
+                            Title = "Мафіни",
+                            UserId = 2,
+                            Weight = 80
                         });
                 });
 
@@ -291,6 +319,16 @@ namespace SweetCreativity.Core.Migrations
                             PhoneNumber = 985674335,
                             UrlSocialnetwork = "@taniabondar23",
                             UserName = "Тетяна2.0"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "olenatkachuk@gmail.com",
+                            FullName = "Олена Ткачук",
+                            Password = "123olenatt",
+                            PhoneNumber = 986390482,
+                            UrlSocialnetwork = "@olena_tkachuk",
+                            UserName = "ОленаT"
                         });
                 });
 
