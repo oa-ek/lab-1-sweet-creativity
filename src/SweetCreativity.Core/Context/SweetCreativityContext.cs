@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SweetCreativity.Core.Context;
 using SweetCreativity.Core.Entities;
 
 namespace SweetCreativity.WebApp.Data;
@@ -21,44 +22,47 @@ public class SweetCreativityContext : DbContext
     public DbSet<ListingImage> ListingImages => Set<ListingImage>();
 
 
-    protected override void OnModelCreating(ModelBuilder builder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-       base.OnModelCreating(builder);
+       //base.OnModelCreating(modelBuilder);
 
-        builder.Entity<Listing>()
+        modelBuilder.Entity<Listing>()
         .HasOne(l => l.User)  // Кожен Listing належить одному User
         .WithMany(u => u.Listings)  // У User може бути багато Listings
         .HasForeignKey(l => l.UserId)
         .OnDelete(DeleteBehavior.Cascade);   // Зовнішній ключ у таблиці Listings
 
-        builder.Entity<Listing>()
+
+        modelBuilder.Entity<Listing>()
     .HasOne(l => l.Category)  // Кожен Listing належить одній Category
     .WithMany(c => c.Listings)  // У Category може бути багато Listings
     .HasForeignKey(l => l.CategoryId)
     .OnDelete(DeleteBehavior.Cascade);  // Зовнішній ключ у таблиці Listings
 
-        builder.Entity<Order>()
+        modelBuilder.Entity<Order>()
     .HasOne(o => o.Status)  // Кожен Order має один Status
     .WithMany(o => o.Orders) // У Status може бути багато Orders
     .HasForeignKey(o => o.StatusId)
     .OnDelete(DeleteBehavior.Cascade);// Зовнішній ключ у таблиці Orders
 
-       builder.Entity<Order>()
+        modelBuilder.Entity<Order>()
    .HasOne(o => o.User)  // Кожен Order має один Status
    .WithMany(o => o.Orders) // У Status може бути багато Orders
    .HasForeignKey(o => o.UserId)
    .OnDelete(DeleteBehavior.NoAction);// Зовнішній ключ у таблиці Orders
 
-        builder.Entity<User>()
+        modelBuilder.Entity<User>()
     .Property(u => u.Email)
     .IsRequired()
     .HasMaxLength(256)
     .IsUnicode(false);
 
-        builder.Entity<Category>()
+        modelBuilder.Entity<Category>()
     .HasIndex(c => c.NameCategory)
     .IsUnique();
 
+       modelBuilder.Seed();
+        base.OnModelCreating(modelBuilder);
     }
 
 
