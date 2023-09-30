@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SweetCreativity.Core.Entities.Listing>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Оголошення</h1>
+<div class="row">
+    @for(int i=0;  i < 6; i++) 
+    {
+    foreach (var listing in Model)
+    {
+        <div class="col-md-4 col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <h5 class="card-title">@listing.Title</h5>
+                    <p class="card-text">@listing.Description</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    }
+
+    }
+</div>

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SweetCreativity.WebApp.Data;
+using SweetCreativity.Core.Context;
+using SweetCreativity.Reposotories.Interfaces;
+using SweetCreativity.Reposotories.Repos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +14,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<SweetCreativityContext>();
-builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IListingReposotory, ListingReposotory>();
+builder.Services.AddControllersWithViews();
+ 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

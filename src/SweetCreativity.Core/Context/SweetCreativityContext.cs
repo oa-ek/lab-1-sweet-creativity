@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SweetCreativity.Core.Context;
 using SweetCreativity.Core.Entities;
 
-namespace SweetCreativity.WebApp.Data;
+namespace SweetCreativity.Core.Context;
 
 public class SweetCreativityContext : DbContext
 {
