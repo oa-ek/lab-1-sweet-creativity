@@ -12,7 +12,7 @@ using SweetCreativity.WebApp.Data;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20230929110634_Init")]
+    [Migration("20230930190608_Init")]
     partial class Init
     {
         /// <inheritdoc />

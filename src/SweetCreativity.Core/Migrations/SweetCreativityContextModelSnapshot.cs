@@ -40,6 +40,33 @@ namespace SweetCreativity.Core.Migrations
                         .IsUnique();
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NameCategory = "Торти"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NameCategory = "Тістечка"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NameCategory = "Цукерки"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NameCategory = "Печиво"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            NameCategory = "Вафлі"
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
@@ -88,6 +115,34 @@ namespace SweetCreativity.Core.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Listings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
+                            Location = "Lviv",
+                            Price = 165m,
+                            Product = "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).",
+                            Title = "Торт Наполеон",
+                            UserId = 1,
+                            Weight = 1000
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
+                            Location = "Rivne",
+                            Price = 18m,
+                            Product = "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.",
+                            Title = "Мафіни",
+                            UserId = 2,
+                            Weight = 80
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.ListingImage", b =>
@@ -253,6 +308,28 @@ namespace SweetCreativity.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "taniabondar@gmail.com",
+                            FullName = "Тетяна Бондар",
+                            Password = "2.0taniab",
+                            PhoneNumber = 985674335,
+                            UrlSocialnetwork = "@taniabondar23",
+                            UserName = "Тетяна2.0"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "olenatkachuk@gmail.com",
+                            FullName = "Олена Ткачук",
+                            Password = "123olenatt",
+                            PhoneNumber = 986390482,
+                            UrlSocialnetwork = "@olena_tkachuk",
+                            UserName = "ОленаT"
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
