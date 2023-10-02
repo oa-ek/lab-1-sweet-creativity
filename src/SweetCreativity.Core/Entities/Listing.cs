@@ -23,6 +23,9 @@ namespace SweetCreativity.Core.Entities
         //public User UserId { get; set; } //??????
         public int Weight { get; set; }
 
+        //public string Path { get; set; }
+
+
         public virtual User? User { get; set; } //з таблички юзер витягується юзкр id
         public int? UserId { get; set; }
         public virtual Category? Category { get; set; }

@@ -1,0 +1,50 @@
+﻿@using SweetCreativity.Core.Entities;
+
+
+@model Listing
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>Оголошення</h1>
+<div class="row">
+    <div class="col-2">Назва:</div>
+    <div class="col-10"><strong>@Model.Title</strong></div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Опис:</div>
+    <div class="col-4">@Model.Description</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Склад продукту:</div>
+    <div class="col-4">@Model.Product</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Дата створення оголошення:</div>
+    <div class="col-4">@Model.CreatedAtListing</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Розташування:</div>
+    <div class="col-4">@Model.Location</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Ціна:</div>
+    <div class="col-4">@Model.Price</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Вага:</div>
+    <div class="col-4">@Model.Weight</div>
+</div>

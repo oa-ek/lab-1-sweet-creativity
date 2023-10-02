@@ -16,5 +16,10 @@ namespace SweetCreativity.WebApp.Controllers
         {
             return View(listingReposotory.GetAll());
         }
+
+        public IActionResult Details(int id)
+        {
+            return View(listingReposotory.Get(id));
+        }
     }
 }
