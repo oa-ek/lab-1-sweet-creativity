@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SweetCreativity.Core.Entities;
 using SweetCreativity.Reposotories.Interfaces;
+using SweetCreativity.Reposotories.Repos;
 
 namespace SweetCreativity.WebApp.Controllers
 {
@@ -20,6 +22,11 @@ namespace SweetCreativity.WebApp.Controllers
         public IActionResult Details(int id)
         {
             return View(listingReposotory.Get(id));
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new Listing());
         }
     }
 }
