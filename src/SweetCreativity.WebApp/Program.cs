@@ -16,7 +16,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<SweetCreativityContext>();
 
 builder.Services.AddScoped<IListingReposotory, ListingReposotory>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
  
 var app = builder.Build();
 
