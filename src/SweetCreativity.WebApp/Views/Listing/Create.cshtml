@@ -1,0 +1,69 @@
+﻿﻿@using SweetCreativity.Core.Entities;
+@model Listing
+
+<h1>Створення нового оголошення</h1>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="Create" enctype="multipart/form-data">
+
+            @Html.ValidationSummary()
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Title)
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Description)
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control"})
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Product)
+                @Html.TextAreaFor(model => model.Product, new { @class = "form-control"})
+                <span asp-validation-for="Product" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.CreatedAtListing)
+                @Html.TextAreaFor(model => model.CreatedAtListing, new { @class = "form-control"})
+                <span asp-validation-for="CreatedAtListing" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Location)
+                @Html.TextAreaFor(model => model.Location, new { @class = "form-control"})
+                <span asp-validation-for="Location" class="text-danger" />
+            </div>
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Price)
+                @Html.TextAreaFor(model => model.Price, new { @class = "form-control"})
+                <span asp-validation-for="Price" class="text-danger" />
+            </div>
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Weight)
+                @Html.TextAreaFor(model => model.Weight, new { @class = "form-control"})
+                <span asp-validation-for="Weight" class="text-danger" />
+            </div>
+
+            @*<div class="form-group mt-3">
+                @Html.DisplayNameFor(model => model.CreatedAtListing)
+                <input asp-for="CreatedAtListing" accept="image/*" />
+                <span asp-validation-for="CreatedAtListing" class="text-danger"></span>
+            </div>*@
+
+            <br />
+            <button type="submit" class="btn btn-success">Зберегти</button>
+
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
