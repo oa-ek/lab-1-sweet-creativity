@@ -95,7 +95,7 @@ namespace SweetCreativity.Core.Context
                   Location = "Rivne",
                   CategoryId = 2,
                   UserId = 2,
-                  Price = 18,
+                  Price = 180,
                   Weight = 80
               }
                 );

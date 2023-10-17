@@ -25,6 +25,11 @@ namespace SweetCreativity.Reposotories.Repos
             throw new NotImplementedException();
         }
 
+        public void Find(int obj)
+        {
+            throw new NotImplementedException();
+        }
+
         public Listing Get(int id)
         {
             throw new NotImplementedException();

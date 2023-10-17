@@ -1,4 +1,4 @@
-﻿@model SweetCreativity.Core.Entities.Listing
+﻿@*@model SweetCreativity.Core.Entities.Listing
 
 <h1>Видалити оголошення</h1>
 <p>Ви впевнені, що хочете видалити наступне оголошення?</p>
@@ -14,3 +14,24 @@
     <button type="submit" class="btn btn-danger">Підтвердити видалення</button>
     <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">Скасувати</a>
 </form>
+*@
+
+@using SweetCreativity.Reposotories.Repos
+@model SweetCreativity.Core.Entities.Listing
+
+<h1>Видалити користувача?</h1>
+<hr />
+
+<p>@Model.Title</p>
+<p>@Model.Description</p>
+<p>@Model.Product</p>
+<p>@Model.CreatedAtListing</p>
+<p>@Model.Location</p>
+<p>@Model.Price</p>
+<p>@Model.Weight</p>
+
+
+<hr />
+<button type="submit" class="btn btn-danger">Видалити</button>
+<a href="/user/index" class="btn btn-outline-dark">Повернутися до списку / Відмінити</a>
+

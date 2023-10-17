@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20230930190608_Init")]
+    [Migration("20231017190505_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -94,8 +94,8 @@ namespace SweetCreativity.Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<string>("Product")
                         .IsRequired()
@@ -127,7 +127,7 @@ namespace SweetCreativity.Core.Migrations
                             CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
                             Location = "Lviv",
-                            Price = 165m,
+                            Price = 165,
                             Product = "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).",
                             Title = "Торт Наполеон",
                             UserId = 1,
@@ -140,7 +140,7 @@ namespace SweetCreativity.Core.Migrations
                             CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
                             Location = "Rivne",
-                            Price = 18m,
+                            Price = 180,
                             Product = "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.",
                             Title = "Мафіни",
                             UserId = 2,
@@ -355,7 +355,7 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.ListingImage", b =>
                 {
                     b.HasOne("SweetCreativity.Core.Entities.Listing", "Listing")
-                        .WithMany("ListingImages")
+                        .WithMany()
                         .HasForeignKey("ListingId");
 
                     b.Navigation("Listing");
@@ -364,7 +364,7 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.Order", b =>
                 {
                     b.HasOne("SweetCreativity.Core.Entities.Listing", "Listing")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("ListingId");
 
                     b.HasOne("SweetCreativity.Core.Entities.Status", "Status")
@@ -396,7 +396,7 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.Response", b =>
                 {
                     b.HasOne("SweetCreativity.Core.Entities.Listing", "Listing")
-                        .WithMany("Responses")
+                        .WithMany()
                         .HasForeignKey("ListingId");
 
                     b.HasOne("SweetCreativity.Core.Entities.User", "User")
@@ -411,15 +411,6 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.Category", b =>
                 {
                     b.Navigation("Listings");
-                });
-
-            modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
-                {
-                    b.Navigation("ListingImages");
-
-                    b.Navigation("Orders");
-
-                    b.Navigation("Responses");
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Status", b =>

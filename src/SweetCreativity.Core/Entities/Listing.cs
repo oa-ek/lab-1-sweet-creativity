@@ -19,7 +19,7 @@ namespace SweetCreativity.Core.Entities
         public string Product { get; set; }
         public DateTime CreatedAtListing { get; set; } //?
         public string Location { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         //public User UserId { get; set; } //??????
         public int Weight { get; set; }
 

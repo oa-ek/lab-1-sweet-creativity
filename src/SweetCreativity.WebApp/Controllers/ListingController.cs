@@ -59,7 +59,9 @@ namespace SweetCreativity.WebApp.Controllers
 
         //    return RedirectToAction("Index");
         //}
-        [HttpGet]
+
+        //////////////////////
+        //[HttpGet]
         public IActionResult Delete(int id)
         {
             Listing listingToDelete = listingReposotory.Get(id);
@@ -73,15 +75,19 @@ namespace SweetCreativity.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult Delete(Listing item)
         {
-            // Викликайте метод Delete з ідентифікатором для видалення запису
-            listingReposotory.Delete(id);
+            listingReposotory.Delete(item.Id);
 
+            listingReposotory.Save();
             return RedirectToAction("Index");
+            //return RedirectToAction(nameof(Index));
+            //return RedirectToAction("DeleteConfirmed");
+
         }
+        //////////////////////
 
-
+        //        [HttpGet]
         public IActionResult Edit(int id)
         {
             Listing item = listingReposotory.Get(id); // Отримуємо елемент за його ID
@@ -121,6 +127,7 @@ namespace SweetCreativity.WebApp.Controllers
 
                         // Збережіть зміни в репозиторії
                         listingReposotory.Update(existingItem);
+                        listingReposotory.Save();
 
                         return RedirectToAction(nameof(Index));
                     }
