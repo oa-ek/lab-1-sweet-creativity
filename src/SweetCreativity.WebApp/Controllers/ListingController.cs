@@ -6,6 +6,7 @@ using SweetCreativity.Core.Context;
 using SweetCreativity.Core.Entities;
 using SweetCreativity.Reposotories.Interfaces;
 using SweetCreativity.Reposotories.Repos;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SweetCreativity.WebApp.Controllers
 {
@@ -46,6 +47,41 @@ namespace SweetCreativity.WebApp.Controllers
             return View(item); 
         }
 
+        //public IActionResult Delete(int id)
+        //{
+        //    return View(listingReposotory.Get(id));
+        //}
+
+        //[HttpPost]
+        //public IActionResult Delete( Listing listing)
+        //{
+        //    listingReposotory.Delete(listing);
+
+        //    return RedirectToAction("Index");
+        //}
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Listing listingToDelete = listingReposotory.Get(id);
+
+            if (listingToDelete == null)
+            {
+                return NotFound();
+            }
+
+            return View(listingToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            // Викликайте метод Delete з ідентифікатором для видалення запису
+            listingReposotory.Delete(id);
+
+            return RedirectToAction("Index");
+        }
+
+
         public IActionResult Edit(int id)
         {
             Listing item = listingReposotory.Get(id); // Отримуємо елемент за його ID
@@ -56,6 +92,10 @@ namespace SweetCreativity.WebApp.Controllers
 
             return View(item);
         }
+        //public IActionResult Edit(int id)
+        //{
+        //    return View(listingRepository.Find(id);
+        //}
 
         [HttpPost]
         public IActionResult Edit(Listing item)
@@ -100,6 +140,7 @@ namespace SweetCreativity.WebApp.Controllers
             }
             return View(item);
         }
+
 
     }
 
