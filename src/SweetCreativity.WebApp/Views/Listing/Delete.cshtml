@@ -32,6 +32,14 @@
 
 
 <hr />
-<button type="submit" class="btn btn-danger">Видалити</button>
-<a href="/user/index" class="btn btn-outline-dark">Повернутися до списку / Відмінити</a>
-
+<form asp-action="ConfirmDelete" class="col-md-4">
+    @Html.AntiForgeryToken()
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a href="/user/index" class="btn btn-outline-dark">Повернутися до списку / Відмінити</a>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

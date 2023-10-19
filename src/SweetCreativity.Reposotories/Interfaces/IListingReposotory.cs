@@ -13,6 +13,8 @@ namespace SweetCreativity.Reposotories.Interfaces
         IEnumerable<Listing> GetAll();
         void Add(Listing obj);
         void Update(Listing obj);
-        void Delete(int id);
+        void Delete(Listing obj);
+
+        //int Find(int id);
     }
 }

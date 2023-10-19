@@ -62,28 +62,40 @@ namespace SweetCreativity.WebApp.Controllers
 
         //////////////////////
         //[HttpGet]
+        //public IActionResult Delete(int id)
+        //{
+        //    Listing listingToDelete = listingReposotory.Get(id);
+
+        //    if (listingToDelete == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(listingToDelete);
+        //}
+
+        //[HttpPost]
+        //public IActionResult Delete(int id)
+        //{
+        //    listingReposotory.Delete(id);
+
+        //    listingReposotory.Save();
+        //    return RedirectToAction("Index");
+        //    //return RedirectToAction(nameof(Index));
+        //    //return RedirectToAction("DeleteConfirmed");
+
+        //}
         public IActionResult Delete(int id)
         {
-            Listing listingToDelete = listingReposotory.Get(id);
-
-            if (listingToDelete == null)
-            {
-                return NotFound();
-            }
-
-            return View(listingToDelete);
+            return View(listingReposotory.Get(id));
         }
 
         [HttpPost]
-        public IActionResult Delete(Listing item)
+        public IActionResult Delete(Listing listing)
         {
-            listingReposotory.Delete(item.Id);
+            listingReposotory.Delete(listing);
 
-            listingReposotory.Save();
             return RedirectToAction("Index");
-            //return RedirectToAction(nameof(Index));
-            //return RedirectToAction("DeleteConfirmed");
-
         }
         //////////////////////
 

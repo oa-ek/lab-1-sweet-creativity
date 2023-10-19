@@ -1,4 +1,5 @@
-﻿using SweetCreativity.Core.Context;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SweetCreativity.Core.Context;
 using SweetCreativity.Core.Entities;
 using SweetCreativity.Reposotories.Interfaces;
 using System;
@@ -22,14 +23,16 @@ namespace SweetCreativity.Reposotories.Repos
             Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Listing obj)
         {
-            throw new NotImplementedException();
+            _context.Set<Listing>().Remove(obj);
+            Save();
         }
 
         public Listing Get(int id)
         {
-            return _context.Listings.Find(id);
+           return _context.Listings.Find(id);
+            //return _context.Set<Listing>().Find(id);
         }
 
         public IEnumerable<Listing> GetAll()
@@ -46,5 +49,9 @@ namespace SweetCreativity.Reposotories.Repos
         {
             _context.Listings.Update(obj);
         }
+        //public Listing Find(int id)
+        //{
+        //    return _context.Listings.FirstOrDefault(listing => listing.Id == id);
+        //}
     }
 }
