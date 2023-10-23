@@ -36,7 +36,7 @@
     <div class="col-2">Розташування:</div>
     <div class="col-4">@Model.Location</div>
 </div>
-@*<hr />*@
+<hr />
 
 <div class="row">
     <div class="col-2">Ціна:</div>
@@ -48,25 +48,12 @@
     <div class="col-2">Вага:</div>
     <div class="col-4">@Model.Weight</div>
 </div>
+<hr />
 
 <div class="row">
-    <div class="col-2">
-        <strong>Назва:</strong>
-    </div>
-    <div class="col-8">
-        @Model.Title
-    </div>
-    <div class="col-2">
-        <a href="@Url.Action("Edit", "Listing", new { id = Model.Id })" class="btn btn-primary">Редагувати</a>
-    </div>
-    <div class="row">
-        <div class="col-2">
-            <strong>Назва:</strong>
+        <div class="col-1">
+            <a href="@Url.Action("Edit", "Listing", new { id = Model.Id })" class="btn btn-primary">Редагувати</a>
         </div>
-        <div class="col-8">
-            @Model.Title
-        </div>
-        
         <div class="col-1">
             <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
                 <button type="submit" class="btn btn-danger">Видалити</button>
