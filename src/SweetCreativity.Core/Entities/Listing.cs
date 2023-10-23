@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,10 @@ namespace SweetCreativity.Core.Entities
         public int Price { get; set; }
         //public User UserId { get; set; } //??????
         public int Weight { get; set; }
+
+        public string? CoverPath { get; set; } = "\\img\\listing\\no_cover.jpg";
+        [NotMapped]
+        public IFormFile? CoverFile { get; set; }
 
         //public string Path { get; set; }
 

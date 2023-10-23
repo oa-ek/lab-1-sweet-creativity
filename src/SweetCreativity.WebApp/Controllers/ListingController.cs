@@ -6,6 +6,7 @@ using SweetCreativity.Core.Context;
 using SweetCreativity.Core.Entities;
 using SweetCreativity.Reposotories.Interfaces;
 using SweetCreativity.Reposotories.Repos;
+using System.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SweetCreativity.WebApp.Controllers
@@ -13,11 +14,13 @@ namespace SweetCreativity.WebApp.Controllers
     public class ListingController : Controller
     {
         private readonly IListingReposotory listingReposotory;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-
-        public ListingController(IListingReposotory listingReposotory)
+        public ListingController(IListingReposotory listingReposotory,
+            IWebHostEnvironment webHostEnviroment)
         {
             this.listingReposotory = listingReposotory;
+            this.webHostEnvironment = webHostEnviroment;
         }
         public IActionResult Index()
         {
@@ -35,16 +38,37 @@ namespace SweetCreativity.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Listing item)
+        public IActionResult Create(Listing model)
         {
             if (ModelState.IsValid)
             {
+                string wwwRootPath = webHostEnvironment.WebRootPath;
 
-                listingReposotory.Add(item);
-                //listingReposotory.SaveChanges();
+                string fileName = Path.GetFileNameWithoutExtension(model.CoverFile.FileName);
+
+                string extension = Path.GetExtension(model.CoverFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                model.CoverPath = "/img/listing/" + fileName;
+                string path = Path.Combine(wwwRootPath + "/img/listing/", fileName);
+
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    model.CoverFile.CopyTo(fileStream);
+                }
+
+                listingReposotory.Add(model);
                 return RedirectToAction(nameof(Index));
             }
-            return View(item); 
+            return View(model);
+        
+            //if (ModelState.IsValid)
+            //{
+
+            //    listingReposotory.Add(item);
+            //    //listingReposotory.SaveChanges();
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(item); 
         }
 
         //public IActionResult Delete(int id)

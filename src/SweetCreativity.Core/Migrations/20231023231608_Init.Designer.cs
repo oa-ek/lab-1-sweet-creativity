@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20231017190505_Init")]
+    [Migration("20231023231608_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -83,6 +83,9 @@ namespace SweetCreativity.Core.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CoverPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAtListing")
                         .HasColumnType("datetime2");
 
@@ -124,6 +127,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
+                            CoverPath = "\\img\\listing\\no_cover.jpg",
                             CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
                             Location = "Lviv",
@@ -137,6 +141,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 2,
                             CategoryId = 2,
+                            CoverPath = "\\img\\listing\\no_cover.jpg",
                             CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
                             Location = "Rivne",
@@ -146,28 +151,6 @@ namespace SweetCreativity.Core.Migrations
                             UserId = 2,
                             Weight = 80
                         });
-                });
-
-            modelBuilder.Entity("SweetCreativity.Core.Entities.ListingImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ListingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ListingId");
-
-                    b.ToTable("ListingImages");
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Order", b =>
@@ -350,15 +333,6 @@ namespace SweetCreativity.Core.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SweetCreativity.Core.Entities.ListingImage", b =>
-                {
-                    b.HasOne("SweetCreativity.Core.Entities.Listing", "Listing")
-                        .WithMany()
-                        .HasForeignKey("ListingId");
-
-                    b.Navigation("Listing");
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Order", b =>

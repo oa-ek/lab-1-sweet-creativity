@@ -70,6 +70,7 @@ namespace SweetCreativity.Core.Migrations
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Weight = table.Column<int>(type: "int", nullable: false),
+                    CoverPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -106,25 +107,6 @@ namespace SweetCreativity.Core.Migrations
                         name: "FK_Ratings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ListingImages",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ListingId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ListingImages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ListingImages_Listings_ListingId",
-                        column: x => x.ListingId,
-                        principalTable: "Listings",
                         principalColumn: "Id");
                 });
 
@@ -211,11 +193,11 @@ namespace SweetCreativity.Core.Migrations
 
             migrationBuilder.InsertData(
                 table: "Listings",
-                columns: new[] { "Id", "CategoryId", "CreatedAtListing", "Description", "Location", "Price", "Product", "Title", "UserId", "Weight" },
+                columns: new[] { "Id", "CategoryId", "CoverPath", "CreatedAtListing", "Description", "Location", "Price", "Product", "Title", "UserId", "Weight" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 1000 },
-                    { 2, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.", "Rivne", 180, "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.", "Мафіни", 2, 80 }
+                    { 1, 1, "\\img\\listing\\no_cover.jpg", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 1000 },
+                    { 2, 2, "\\img\\listing\\no_cover.jpg", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.", "Rivne", 180, "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.", "Мафіни", 2, 80 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -223,11 +205,6 @@ namespace SweetCreativity.Core.Migrations
                 table: "Categories",
                 column: "NameCategory",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ListingImages_ListingId",
-                table: "ListingImages",
-                column: "ListingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Listings_CategoryId",
@@ -273,9 +250,6 @@ namespace SweetCreativity.Core.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ListingImages");
-
             migrationBuilder.DropTable(
                 name: "Orders");
 

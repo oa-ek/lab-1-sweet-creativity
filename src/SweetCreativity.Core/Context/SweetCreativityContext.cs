@@ -18,7 +18,7 @@ public class SweetCreativityContext : DbContext
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<Response> Responses => Set<Response>();
     public DbSet<Rating> Ratings => Set<Rating>();
-    public DbSet<ListingImage> ListingImages => Set<ListingImage>();
+    //public DbSet<ListingImage> ListingImages => Set<ListingImage>();
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
