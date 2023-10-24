@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SweetCreativity.Core.Entities.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Користувачі</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Зареєструватися</a>
+</p>
+
+
+<div class="row">
+    @for (int i = 0; i < 6; i++)
+    {
+        foreach (var user in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card" style="width: 18rem;">
+                    <img src="@user.CoverPath" class="card-img-top" alt="@user.UserName">
+                    <div class="card-body">
+                        <h5 class="card-title">@user.UserName</h5>
+                        <p class="card-text">@user.FullName</p>
+                        <a href="/user/details/@user.Id" class="btn btn-outline-primary">Детальніше</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+</div>

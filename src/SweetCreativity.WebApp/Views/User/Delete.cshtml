@@ -1,0 +1,25 @@
+﻿@using SweetCreativity.Reposotories.Repos
+@model SweetCreativity.Core.Entities.User
+
+<h1>Видалити обліковий запис</h1>
+<hr />
+
+<p>@Model.UserName</p>
+<p>@Model.Email</p>
+<p>@Model.Password</p>
+<p>@Model.FullName</p>
+<p>@Model.PhoneNumber</p>
+<p>@Model.UrlSocialnetwork</p>
+<p>@Model.CoverPath</p>
+<hr />
+<form asp-action="ConfirmDelete" class="col-md-4">
+    @Html.AntiForgeryToken()
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a href="/user/index" class="btn btn-outline-dark">Повернутися на сторінку користувачів / Відмінити</a>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

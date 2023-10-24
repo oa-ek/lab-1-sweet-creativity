@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20231023231608_Init")]
+    [Migration("20231024223111_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -266,6 +266,9 @@ namespace SweetCreativity.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CoverPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -299,6 +302,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 1,
+                            CoverPath = "\\img\\user\\no_cover.jpg",
                             Email = "taniabondar@gmail.com",
                             FullName = "Тетяна Бондар",
                             Password = "2.0taniab",
@@ -309,6 +313,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 2,
+                            CoverPath = "\\img\\user\\no_cover.jpg",
                             Email = "olenatkachuk@gmail.com",
                             FullName = "Олена Ткачук",
                             Password = "123olenatt",

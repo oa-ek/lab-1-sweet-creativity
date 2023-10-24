@@ -50,7 +50,8 @@ namespace SweetCreativity.Core.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
-                    UrlSocialnetwork = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    UrlSocialnetwork = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CoverPath = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -184,11 +185,11 @@ namespace SweetCreativity.Core.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "FullName", "Password", "PhoneNumber", "UrlSocialnetwork", "UserName" },
+                columns: new[] { "Id", "CoverPath", "Email", "FullName", "Password", "PhoneNumber", "UrlSocialnetwork", "UserName" },
                 values: new object[,]
                 {
-                    { 1, "taniabondar@gmail.com", "Тетяна Бондар", "2.0taniab", 985674335, "@taniabondar23", "Тетяна2.0" },
-                    { 2, "olenatkachuk@gmail.com", "Олена Ткачук", "123olenatt", 986390482, "@olena_tkachuk", "ОленаT" }
+                    { 1, "\\img\\user\\no_cover.jpg", "taniabondar@gmail.com", "Тетяна Бондар", "2.0taniab", 985674335, "@taniabondar23", "Тетяна2.0" },
+                    { 2, "\\img\\user\\no_cover.jpg", "olenatkachuk@gmail.com", "Олена Ткачук", "123olenatt", 986390482, "@olena_tkachuk", "ОленаT" }
                 });
 
             migrationBuilder.InsertData(

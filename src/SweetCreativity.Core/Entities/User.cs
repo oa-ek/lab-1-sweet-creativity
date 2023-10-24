@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,11 +20,14 @@ namespace SweetCreativity.Core.Entities
         public string Password { get; set; } 
         public string FullName { get; set; } 
         public int PhoneNumber { get; set; }
-        public string UrlSocialnetwork { get; set; } 
+        public string UrlSocialnetwork { get; set; }
+        public string? CoverPath { get; set; } = "\\img\\user\\no_cover.jpg";
+        [NotMapped]
+        public IFormFile? CoverFile { get; set; }
 
-        public virtual ICollection<Listing> Listings { get; set; } // один до багатьох(1 користувач може мати багато оголошень)
-        public virtual ICollection<Rating> Ratings { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Response> Responses { get; set; }
+        public virtual ICollection<Listing>? Listings { get; set; } // один до багатьох(1 користувач може мати багато оголошень)
+        public virtual ICollection<Rating>? Ratings { get; set; }
+        public virtual ICollection<Order>? Orders { get; set; }
+        public virtual ICollection<Response>? Responses { get; set; }
     }
 }

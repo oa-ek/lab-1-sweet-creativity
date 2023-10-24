@@ -1,0 +1,60 @@
+﻿@using SweetCreativity.Core.Entities;
+
+
+@model User
+
+@{
+    ViewData["Title"] = Model.UserName;
+}
+
+<h1>Користувач</h1>
+<div class="row col-4">
+    <img src="@Model.CoverPath" class="card-img-top" alt="@Model.UserName">
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Ім'я користувача:</div>
+    <div class="col-10"><strong>@Model.UserName</strong></div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Email:</div>
+    <div class="col-4">@Model.Email</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Ім'я та прізвище:</div>
+    <div class="col-4">@Model.FullName</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Номер телефону:</div>
+    <div class="col-4">@Model.PhoneNumber</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Соціальні мережі:</div>
+    <div class="col-4">@Model.UrlSocialnetwork</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-1">
+        <a href="@Url.Action("Edit", "User", new { id = Model.Id })" class="btn btn-primary">Редагувати</a>
+    </div>
+    <div class="col-1">
+        <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+            <button type="submit" class="btn btn-danger">Видалити</button>
+        </form>
+    </div>
+</div>
+
+
+</div>
+
+

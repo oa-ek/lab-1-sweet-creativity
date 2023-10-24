@@ -263,6 +263,9 @@ namespace SweetCreativity.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CoverPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -296,6 +299,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 1,
+                            CoverPath = "\\img\\user\\no_cover.jpg",
                             Email = "taniabondar@gmail.com",
                             FullName = "Тетяна Бондар",
                             Password = "2.0taniab",
@@ -306,6 +310,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 2,
+                            CoverPath = "\\img\\user\\no_cover.jpg",
                             Email = "olenatkachuk@gmail.com",
                             FullName = "Олена Ткачук",
                             Password = "123olenatt",
