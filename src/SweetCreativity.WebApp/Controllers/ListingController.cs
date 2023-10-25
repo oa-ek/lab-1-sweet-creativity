@@ -15,6 +15,7 @@ namespace SweetCreativity.WebApp.Controllers
     {
         private readonly IListingReposotory listingReposotory;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly SweetCreativityContext context; // Отримуємо контекст бази даних
 
         public ListingController(IListingReposotory listingReposotory,
             IWebHostEnvironment webHostEnviroment)
@@ -31,11 +32,28 @@ namespace SweetCreativity.WebApp.Controllers
         {
             return View(listingReposotory.Get(id));
         }
+        //[HttpGet]
+        //public IActionResult Create()
+        //{
+        //    return View(new Listing());
+        //}
+
         [HttpGet]
         public IActionResult Create()
         {
+            // Отримуємо список категорій з контексту бази даних
+            List<Category> categories = context.Categories.ToList();
+
+            // Перетворюємо список категорій на список рядків для випадаючого списку
+            List<string> categoryNames = categories.Select(c => c.NameCategory).ToList();
+
+            // Передаємо список категорій у ViewBag для відображення у представленні
+            ViewBag.CategoryNames = categoryNames;
+
             return View(new Listing());
         }
+
+
 
         [HttpPost]
         public IActionResult Create(Listing model)
@@ -60,7 +78,7 @@ namespace SweetCreativity.WebApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
-        
+
             //if (ModelState.IsValid)
             //{
 
@@ -188,6 +206,3 @@ namespace SweetCreativity.WebApp.Controllers
     }
 
 }
-
-
-

@@ -1,4 +1,4 @@
-﻿﻿@using SweetCreativity.Core.Entities;
+﻿﻿﻿@using SweetCreativity.Core.Entities;
 @model Listing
 
 <h1>Створення нового оголошення</h1>
@@ -21,6 +21,22 @@
                 @Html.TextAreaFor(model => model.Description, new { @class = "form-control"})
                 <span asp-validation-for="Description" class="text-danger" />
             </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Product)
+                @Html.TextAreaFor(model => model.Product, new { @class = "form-control" })
+                <span asp-validation-for="Product" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.CategoryId)
+                <label asp-for="CategoryId">Категорія</label>
+                <select asp-for="CategoryId" asp-items="new SelectList(ViewBag.CategoryNames)" class="form-control">
+                    <option value="">Оберіть категорію</option>
+                </select>
+            </div>
+
+
 
             <div data="mb-3">
                 @Html.DisplayNameFor(model => model.Product)
