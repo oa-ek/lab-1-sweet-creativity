@@ -18,16 +18,21 @@
                 <span asp-validation-for="Title" class="text-danger" />
             </div>
 
-            <div data="mb-3">
-                @Html.DisplayNameFor(model => model.Description)
-                @Html.TextAreaFor(model => model.Description, new { @class = "form-control"})
-                <span asp-validation-for="Description" class="text-danger" />
+            <div class="form-group">
+                <label asp-for="CategoryId">Category</label>
+                <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-control"></select>
             </div>
 
             <div data="mb-3">
                 @Html.DisplayNameFor(model => model.Product)
                 @Html.TextAreaFor(model => model.Product, new { @class = "form-control"})
                 <span asp-validation-for="Product" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Description)
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control"})
+                <span asp-validation-for="Description" class="text-danger" />
             </div>
 
             <div data="mb-3">

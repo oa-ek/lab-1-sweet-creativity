@@ -8,6 +8,7 @@ public class SweetCreativityContext : DbContext
     public SweetCreativityContext(DbContextOptions<SweetCreativityContext> options)
         : base(options)
     {
+
     }
 
 
@@ -16,6 +17,7 @@ public class SweetCreativityContext : DbContext
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<Status> Statuses => Set<Status>();
     public DbSet<Category> Categories => Set<Category>();
+
     public DbSet<Response> Responses => Set<Response>();
     public DbSet<Rating> Ratings => Set<Rating>();
     //public DbSet<ListingImage> ListingImages => Set<ListingImage>();
