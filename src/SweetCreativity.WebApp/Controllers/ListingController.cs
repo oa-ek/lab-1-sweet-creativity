@@ -26,35 +26,17 @@ namespace SweetCreativity.WebApp.Controllers
             this.webHostEnvironment = webHostEnviroment;
             this._context = context;
         }
-        //public ListingController(SweetCreativityContext context)
-        //{
-        //    _context = context;
-        //}
+
         public IActionResult Index()
         {
             return View(listingReposotory.GetAll());
         }
 
-        //public IActionResult Details(int id)
-        //{
-        //    //return View(listingReposotory.Get(id));
-        //    var listing = _context.Listings
-        //.Include(l => l.Category) // Завантажуємо категорію
-        //.FirstOrDefault(l => l.Id == id);
-
-        //    if (listing == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(listing);
-
-
-        //}
         public IActionResult Details(int id)
         {
             var listing = _context.Listings
                 .Include(l => l.Ratings)
+                .Include(l => l.Responses)
                 .FirstOrDefault(l => l.Id == id);
 
             if (listing == null)
@@ -107,24 +89,8 @@ namespace SweetCreativity.WebApp.Controllers
             return RedirectToAction("Details", new { id = listingId });
 
         }
-        //public IActionResult Details(int id)
-        //{
-        //    var listing = _context.Listings
-        //        .Include(l => l.Ratings)
-        //        .FirstOrDefault(l => l.Id == id);
 
-        //    if (listing == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    double averageRating = listing.Ratings != null ? CalculateAverageRating(listing.Ratings) : 0.0;
-
-        //    ViewBag.AverageRating = averageRating; // Передача середнього рейтингу в ViewBag
-
-        //    return View(listing);
-        //}
-
+        /////////////////
         private double CalculateAverageRating(List<Rating> ratings)
         {
             if (ratings.Count == 0)
@@ -140,19 +106,6 @@ namespace SweetCreativity.WebApp.Controllers
 
             return totalRating / ratings.Count;
         }
-
-
-
-        /// <summary>
-        /// /////////////////////////////////////////////////////////////////////////
-        /// </summary>
-        /// <returns></returns>
-
-        //[HttpGet]
-        //public IActionResult Create()
-        //{
-        //    return View(new Listing());
-        //}
 
         [HttpGet]
         public IActionResult Create()
@@ -196,54 +149,6 @@ namespace SweetCreativity.WebApp.Controllers
             return View(model);
         }
 
-        //if (ModelState.IsValid)
-        //{
-
-        //    listingReposotory.Add(item);
-        //    //listingReposotory.SaveChanges();
-        //    return RedirectToAction(nameof(Index));
-        //}
-        //return View(item); 
-        //}
-
-        //public IActionResult Delete(int id)
-        //{
-        //    return View(listingReposotory.Get(id));
-        //}
-
-        //[HttpPost]
-        //public IActionResult Delete( Listing listing)
-        //{
-        //    listingReposotory.Delete(listing);
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //////////////////////
-        //[HttpGet]
-        //public IActionResult Delete(int id)
-        //{
-        //    Listing listingToDelete = listingReposotory.Get(id);
-
-        //    if (listingToDelete == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(listingToDelete);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Delete(int id)
-        //{
-        //    listingReposotory.Delete(id);
-
-        //    listingReposotory.Save();
-        //    return RedirectToAction("Index");
-        //    //return RedirectToAction(nameof(Index));
-        //    //return RedirectToAction("DeleteConfirmed");
-
-        //}
         public IActionResult Delete(int id)
         {
             return View(listingReposotory.Get(id));
@@ -277,10 +182,6 @@ namespace SweetCreativity.WebApp.Controllers
             return View(item);
         }
 
-        //public IActionResult Edit(int id)
-        //{
-        //    return View(listingRepository.Find(id);
-        //}
         [HttpPost]
         public IActionResult Edit(Listing item)
         {
@@ -337,50 +238,86 @@ namespace SweetCreativity.WebApp.Controllers
             }
             return View(item);
         }
+        [HttpPost]
+        public IActionResult AddResponse(int listingId, string textResponse)
+        {
+            var listing = _context.Listings
+                .Include(l => l.Responses)
+                .FirstOrDefault(l => l.Id == listingId);
 
+            if (listing == null)
+            {
+                return NotFound();
+            }
+
+            var newResponse = new Response
+            {
+                TextResponse = textResponse,
+                CreatedAtResponse = DateTime.Now
+            };
+
+            listing.Responses.Add(newResponse);
+            _context.SaveChanges();
+
+            // Після додавання відгуку перенаправте користувача на сторінку оголошення
+            return RedirectToAction("Details", new { id = listingId });
+        }
         //[HttpPost]
-        //public IActionResult Edit(Listing item)
+        //public IActionResult AddRatingResponse(int listingId, int ratingPoint, string textResponse)
         //{
-        //    if (ModelState.IsValid)
+        //    // Отримайте оголошення, до якого буде додаватися рейтинг та відгук
+        //    var listing = _context.Listings
+        //        .Include(l => l.Ratings)
+        //        .Include(l => l.Responses)
+        //        .FirstOrDefault(l => l.Id == listingId);
+
+        //    if (listing == null)
         //    {
-        //        try
-        //        {
-        //            // Отримайте запис для оновлення з репозиторію
-        //            var existingItem = listingReposotory.Get(item.Id);
-
-        //            if (existingItem != null)
-        //            {
-        //                // Оновіть дані, які ви хочете змінити
-        //                existingItem.Title = item.Title;
-        //                existingItem.Description = item.Description;
-        //                existingItem.Product = item.Product;
-        //                existingItem.CreatedAtListing = item.CreatedAtListing;
-        //                existingItem.Location = item.Location;
-        //                existingItem.Price = item.Price;
-        //                existingItem.Weight = item.Weight;
-
-        //                // Оновіть ID категорії
-        //                existingItem.CategoryId = item.CategoryId;
-
-        //                // Збережіть зміни в репозиторії
-        //                listingReposotory.Update(existingItem);
-        //                listingReposotory.Save();
-
-        //                return RedirectToAction(nameof(Index));
-        //            }
-        //            else
-        //            {
-        //                return NotFound();
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            // Обробте помилку при оновленні даних, якщо вона виникла
-        //            // Виведіть або збережіть повідомлення про помилку для подальшого аналізу
-        //            return View(item);
-        //        }
+        //        return NotFound();
         //    }
-        //    return View(item);
+
+        //    // Додайте рейтинг до оголошення
+        //    var newRating = new Rating
+        //    {
+        //        RatingPoint = ratingPoint,
+        //        ListingId = listing.Id
+        //    };
+        //    listing.Ratings.Add(newRating);
+
+        //    // Додайте відгук до оголошення
+        //    var newResponse = new Response
+        //    {
+        //        TextResponse = textResponse,
+        //        CreatedAtResponse = DateTime.Now, // або інша логіка для встановлення дати
+        //        ListingId = listing.Id
+        //    };
+        //    listing.Responses.Add(newResponse);
+
+        //    // Збережіть зміни в базі даних
+        //    _context.SaveChanges();
+
+        //    // Обрахуйте середній рейтинг після додавання нового рейтингу
+        //    double averageRating = CalculateAverageRating(listing.Ratings);
+
+        //    // Передайте оновлений середній рейтинг та оголошення в представлення
+        //    ViewBag.AverageRating = averageRating;
+        //    return View(listing);
+        //}
+
+        //private double CalculateAverageRating(List<Rating> ratings)
+        //{
+        //    if (ratings.Count == 0)
+        //    {
+        //        return 0.0; // Повернути 0, якщо немає жодного рейтингу
+        //    }
+
+        //    double totalRating = 0.0;
+        //    foreach (var rating in ratings)
+        //    {
+        //        totalRating += rating.RatingPoint;
+        //    }
+
+        //    return totalRating / ratings.Count;
         //}
 
 

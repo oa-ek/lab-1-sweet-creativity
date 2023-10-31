@@ -91,18 +91,45 @@
 <hr />
 
 <div class="row">
-    <div class="col-2">Середній рейтинг:</div>
+    <div class="col-2">
+        <a href="@Url.Action("Create", "Order", new { listingId = Model.Id })" class="btn btn-success"
+           style="width: 200px; margin-top: 10px; margin-bottom: 10px;">Зробити замовлення</a>
+    </div>
+</div>
+<hr />
+
+<div>
+    <a href="javascript:void(0);" class="btn btn-primary" onclick="openRatingModal()">
+        Залишити рейтинг/відгук
+    </a>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2"><h5>Середній рейтинг:</h5></div>
     <div class="col-4">
         @ViewBag.AverageRating
     </div>
 </div>
 <br />
-<div>
-    <a href="javascript:void(0);" class="btn btn-primary" onclick="openRatingModal()">
-        Залишити рейтинг
-    </a>
-</div>
+
+<h5>Відгуки користувачів</h5>
+@if (Model.Responses != null && Model.Responses.Count > 0)
+{
+    <ul>
+
+        @foreach (var response in Model.Responses)
+        {
+            <li>@response.TextResponse</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Наразі немає жодних відгуків.</p>
+}
 <hr />
+<br />
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
@@ -114,7 +141,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ratingModalLabel">Додати рейтинг</h5>
+                <h5 class="modal-title" id="ratingModalLabel">Додати рейтинг/відгук</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -133,22 +160,18 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Зберегти рейтинг</button>
+                    <br />
                 </form>
-
+                <form asp-action="AddResponse" asp-controller="Listing">
+                    <input type="hidden" name="listingId" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="textResponse">Текст відгуку:</label>
+                        <textarea name="textResponse" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Зберегти відгук</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
-
-
-
-<div class="row">
-    <div class="col-2">
-        <a href="@Url.Action("Create", "Order", new { listingId = Model.Id })" class="btn btn-success"
-           style="width: 200px; margin-top: 10px; margin-bottom: 10px;">Зробити замовлення</a>
-    </div>
-</div>
-
-</div>
-
 

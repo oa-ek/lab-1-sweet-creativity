@@ -216,8 +216,8 @@ namespace SweetCreativity.Core.Migrations
                 columns: new[] { "Id", "CoverPath", "CreatedAtOrder", "CustomerNumber", "ListingId", "NameOrder", "Quantity", "StatusId", "TotalPrice", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1376), 985684335, 1, "Торт Наполеон", 1, null, 250m, 1 },
-                    { 2, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1433), 985688735, 2, "Торт Спартак", 1, null, 400m, 2 }
+                    { 1, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 19, 42, 49, 429, DateTimeKind.Local).AddTicks(4529), 985684335, 1, "Торт Наполеон", 1, null, 250m, 1 },
+                    { 2, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 19, 42, 49, 429, DateTimeKind.Local).AddTicks(4573), 985688735, 2, "Торт Спартак", 1, null, 400m, 2 }
                 });
 
             migrationBuilder.CreateIndex(

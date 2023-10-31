@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20231031141747_Init")]
+    [Migration("20231031174249_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -204,7 +204,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 1,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1376),
+                            CreatedAtOrder = new DateTime(2023, 10, 31, 19, 42, 49, 429, DateTimeKind.Local).AddTicks(4529),
                             CustomerNumber = 985684335,
                             ListingId = 1,
                             NameOrder = "Торт Наполеон",
@@ -216,7 +216,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 2,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1433),
+                            CreatedAtOrder = new DateTime(2023, 10, 31, 19, 42, 49, 429, DateTimeKind.Local).AddTicks(4573),
                             CustomerNumber = 985688735,
                             ListingId = 2,
                             NameOrder = "Торт Спартак",
@@ -423,7 +423,7 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.Response", b =>
                 {
                     b.HasOne("SweetCreativity.Core.Entities.Listing", "Listing")
-                        .WithMany()
+                        .WithMany("Responses")
                         .HasForeignKey("ListingId");
 
                     b.HasOne("SweetCreativity.Core.Entities.User", "User")
@@ -443,6 +443,8 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
                 {
                     b.Navigation("Ratings");
+
+                    b.Navigation("Responses");
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Status", b =>
