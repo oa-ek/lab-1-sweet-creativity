@@ -14,7 +14,7 @@ namespace SweetCreativity.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string TextResponse { get; set; }
-        public DateTime CreatedAtResponse { get; set; }
+        public DateTime CreatedAtResponse { get; set; } = DateTime.Now;
 
         public virtual User? User { get; set; }
         public int? UserId { get; set; }

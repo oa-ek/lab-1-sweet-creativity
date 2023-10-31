@@ -18,7 +18,7 @@ namespace SweetCreativity.Core.Entities
         //public string ImageListing { get; set; } //?
         public string Description { get; set; }
         public string Product { get; set; }
-        public DateTime CreatedAtListing { get; set; } //?
+        public DateTime CreatedAtListing { get; set; } = DateTime.Now;
         public string Location { get; set; }
         public int Price { get; set; }
         //public User UserId { get; set; } //??????
@@ -36,10 +36,10 @@ namespace SweetCreativity.Core.Entities
         public virtual Category? Category { get; set; }
         public int? CategoryId { get; set; }
 
-        public List<Rating> Ratings { get; set; }
+        public List<Rating>? Ratings { get; set; }
         //public virtual ICollection<Order> Orders { get; set; }
         //public virtual ICollection<ListingImage> ListingImages { get; set; }
         //public virtual ICollection<Response> Responses { get; set; }
-        public List<Response> Responses { get; set; }
+        public List<Response>? Responses { get; set; }
     }
 }

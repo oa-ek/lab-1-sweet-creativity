@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20231031174249_Init")]
+    [Migration("20231031194006_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -128,7 +128,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 1,
                             CategoryId = 1,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAtListing = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3239),
                             Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
                             Location = "Lviv",
                             Price = 165,
@@ -142,7 +142,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 2,
                             CategoryId = 2,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAtListing = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3306),
                             Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
                             Location = "Rivne",
                             Price = 180,
@@ -204,7 +204,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 1,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 31, 19, 42, 49, 429, DateTimeKind.Local).AddTicks(4529),
+                            CreatedAtOrder = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3841),
                             CustomerNumber = 985684335,
                             ListingId = 1,
                             NameOrder = "Торт Наполеон",
@@ -216,7 +216,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 2,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 31, 19, 42, 49, 429, DateTimeKind.Local).AddTicks(4573),
+                            CreatedAtOrder = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3856),
                             CustomerNumber = 985688735,
                             ListingId = 2,
                             NameOrder = "Торт Спартак",

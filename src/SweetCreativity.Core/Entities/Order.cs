@@ -18,7 +18,7 @@ namespace SweetCreativity.Core.Entities
 
         public int Quantity { get; set; } 
         public decimal TotalPrice { get; set; }
-        public DateTime CreatedAtOrder { get; set; }
+        public DateTime CreatedAtOrder { get; set; } = DateTime.Now;
         public int CustomerNumber { get; set; }
 
         public string? CoverPath { get; set; } = "\\img\\user\\no_cover.jpg";
