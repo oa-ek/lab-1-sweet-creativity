@@ -93,25 +93,6 @@ namespace SweetCreativity.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ratings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RatingPoint = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ratings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Ratings_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -143,6 +124,32 @@ namespace SweetCreativity.Core.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ratings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RatingPoint = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    ListingId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ratings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Listings_ListingId",
+                        column: x => x.ListingId,
+                        principalTable: "Listings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
@@ -209,8 +216,8 @@ namespace SweetCreativity.Core.Migrations
                 columns: new[] { "Id", "CoverPath", "CreatedAtOrder", "CustomerNumber", "ListingId", "NameOrder", "Quantity", "StatusId", "TotalPrice", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9529), 985684335, 1, "Торт Наполеон", 1, null, 250m, 1 },
-                    { 2, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9675), 985688735, 2, "Торт Спартак", 1, null, 400m, 2 }
+                    { 1, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1376), 985684335, 1, "Торт Наполеон", 1, null, 250m, 1 },
+                    { 2, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1433), 985688735, 2, "Торт Спартак", 1, null, 400m, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -243,6 +250,11 @@ namespace SweetCreativity.Core.Migrations
                 name: "IX_Orders_UserId",
                 table: "Orders",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ratings_ListingId",
+                table: "Ratings",
+                column: "ListingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_UserId",

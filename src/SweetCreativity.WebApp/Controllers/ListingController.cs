@@ -35,22 +35,119 @@ namespace SweetCreativity.WebApp.Controllers
             return View(listingReposotory.GetAll());
         }
 
+        //public IActionResult Details(int id)
+        //{
+        //    //return View(listingReposotory.Get(id));
+        //    var listing = _context.Listings
+        //.Include(l => l.Category) // Завантажуємо категорію
+        //.FirstOrDefault(l => l.Id == id);
+
+        //    if (listing == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(listing);
+
+
+        //}
         public IActionResult Details(int id)
         {
-            //return View(listingReposotory.Get(id));
             var listing = _context.Listings
-        .Include(l => l.Category) // Завантажуємо категорію
-        .FirstOrDefault(l => l.Id == id);
+                .Include(l => l.Ratings)
+                .FirstOrDefault(l => l.Id == id);
 
             if (listing == null)
             {
                 return NotFound();
             }
 
-            return View(listing);
+            double averageRating = listing.Ratings != null ? CalculateAverageRating(listing.Ratings) : 0.0;
 
+            ViewBag.AverageRating = averageRating; // Передача середнього рейтингу в ViewBag
+
+            return View(listing);
+        }
+
+        [HttpPost]
+        public IActionResult AddRating(int listingId, int ratingPoint)
+        {
+            // Отримайте оголошення, до якого буде додаватися рейтинг
+            var listing = _context.Listings
+                .Include(l => l.Ratings)
+                .FirstOrDefault(l => l.Id == listingId);
+
+            if (listing == null)
+            {
+                return NotFound();
+            }
+
+            // Перевірте, чи користувач вже залишив рейтинг для даного оголошення
+
+            // Створіть новий рейтинг
+            var newRating = new Rating
+            {
+                RatingPoint = ratingPoint,
+                ListingId = listing.Id
+            };
+
+            // Додайте новий рейтинг до оголошення
+            listing.Ratings.Add(newRating);
+
+            // Збережіть зміни в базі даних
+            _context.SaveChanges();
+
+            // Отримайте середній рейтинг після додавання нового рейтингу
+            double averageRating = listing.Ratings != null ? CalculateAverageRating(listing.Ratings) : 0.0;
+
+            // Передайте оновлений середній рейтинг до ViewBag
+            ViewBag.AverageRating = averageRating;
+
+
+            return RedirectToAction("Details", new { id = listingId });
 
         }
+        //public IActionResult Details(int id)
+        //{
+        //    var listing = _context.Listings
+        //        .Include(l => l.Ratings)
+        //        .FirstOrDefault(l => l.Id == id);
+
+        //    if (listing == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    double averageRating = listing.Ratings != null ? CalculateAverageRating(listing.Ratings) : 0.0;
+
+        //    ViewBag.AverageRating = averageRating; // Передача середнього рейтингу в ViewBag
+
+        //    return View(listing);
+        //}
+
+        private double CalculateAverageRating(List<Rating> ratings)
+        {
+            if (ratings.Count == 0)
+            {
+                return 0.0; // Повертаємо 0, якщо немає жодного рейтингу
+            }
+
+            double totalRating = 0.0;
+            foreach (var rating in ratings)
+            {
+                totalRating += rating.RatingPoint;
+            }
+
+            return totalRating / ratings.Count;
+        }
+
+
+
+        /// <summary>
+        /// /////////////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <returns></returns>
+
         //[HttpGet]
         //public IActionResult Create()
         //{

@@ -13,10 +13,13 @@ namespace SweetCreativity.Core.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string RatingPoint { get; set; }
+        public int RatingPoint { get; set; }
 
         public int? UserId { get; set; }
         public virtual User? User { get; set; }
+
+        public int ListingId { get; set; } 
+        public virtual Listing Listing { get; set; }
 
         //public int ResponseId { get; set; }
         //public Response ResponseId { get; set; }

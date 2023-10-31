@@ -35,6 +35,8 @@ namespace SweetCreativity.Core.Entities
         public int? UserId { get; set; }
         public virtual Category? Category { get; set; }
         public int? CategoryId { get; set; }
+
+        public List<Rating> Ratings { get; set; }
         //public virtual ICollection<Order> Orders { get; set; }
         //public virtual ICollection<ListingImage> ListingImages { get; set; }
         //public virtual ICollection<Response> Responses { get; set; }

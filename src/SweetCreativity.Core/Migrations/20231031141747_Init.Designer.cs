@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20231030191358_Init")]
+    [Migration("20231031141747_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -204,7 +204,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 1,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9529),
+                            CreatedAtOrder = new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1376),
                             CustomerNumber = 985684335,
                             ListingId = 1,
                             NameOrder = "Торт Наполеон",
@@ -216,7 +216,7 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 2,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9675),
+                            CreatedAtOrder = new DateTime(2023, 10, 31, 16, 17, 46, 853, DateTimeKind.Local).AddTicks(1433),
                             CustomerNumber = 985688735,
                             ListingId = 2,
                             NameOrder = "Торт Спартак",
@@ -234,14 +234,18 @@ namespace SweetCreativity.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("RatingPoint")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ListingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RatingPoint")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ListingId");
 
                     b.HasIndex("UserId");
 
@@ -401,9 +405,17 @@ namespace SweetCreativity.Core.Migrations
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Rating", b =>
                 {
+                    b.HasOne("SweetCreativity.Core.Entities.Listing", "Listing")
+                        .WithMany("Ratings")
+                        .HasForeignKey("ListingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SweetCreativity.Core.Entities.User", "User")
                         .WithMany("Ratings")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("Listing");
 
                     b.Navigation("User");
                 });
@@ -426,6 +438,11 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.Category", b =>
                 {
                     b.Navigation("Listings");
+                });
+
+            modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
+                {
+                    b.Navigation("Ratings");
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Status", b =>
