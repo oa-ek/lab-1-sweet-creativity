@@ -1,0 +1,54 @@
+﻿@using SweetCreativity.Core.Entities;
+
+
+@model Order
+
+@{
+    ViewData["Title"] = Model.NameOrder;
+}
+
+<h1>Замовлення</h1>
+<div class="row col-4">
+    <img src="@Model.CoverPath" class="card-img-top" alt="@Model.NameOrder">
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Назва замовлення:</div>
+    <div class="col-10"><strong>@Model.NameOrder</strong></div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Кількість:</div>
+    <div class="col-4">@Model.Quantity</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Загальна сума замовлення:</div>
+    <div class="col-4">@Model.TotalPrice</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Дата створення замовлення:</div>
+    <div class="col-4">@Model.CreatedAtOrder</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">Номер телефону замовника:</div>
+    <div class="col-4">@Model.CustomerNumber</div>
+</div>
+<hr />
+<div class="col-1">
+    <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+        <button type="submit" class="btn btn-danger">Видалити</button>
+    </form>
+</div>
+</div>
+
+
+</div>
+

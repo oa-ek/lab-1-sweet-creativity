@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,9 +14,16 @@ namespace SweetCreativity.Core.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int Quantity { get; set; }
+        public string NameOrder { get; set; }
+
+        public int Quantity { get; set; } 
         public decimal TotalPrice { get; set; }
         public DateTime CreatedAtOrder { get; set; }
+        public int CustomerNumber { get; set; }
+
+        public string? CoverPath { get; set; } = "\\img\\user\\no_cover.jpg";
+        [NotMapped]
+        public IFormFile? CoverFile { get; set; }
 
         public virtual User? User { get; set; }
        public int? UserId { get; set; }

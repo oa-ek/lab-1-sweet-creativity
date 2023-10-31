@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SweetCreativity.Core.Entities.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Замовлення</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Зробити замовлення </a>
+</p>
+
+
+<div class="row">
+    @for (int i = 0; i < 1; i++)
+    {
+        foreach (var order in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card" style="width: 18rem;">
+                    <img src="@order.CoverPath" class="card-img-top" alt="@order.NameOrder">
+                    <div class="card-body">
+                        <h5 class="card-title">@order.NameOrder</h5>
+                        <p class="card-text">@order.Quantity</p>
+                        <a href="/order/details/@order.Id" class="btn btn-outline-primary">Детальніше</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+</div>

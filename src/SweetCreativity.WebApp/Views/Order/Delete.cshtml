@@ -1,0 +1,24 @@
+﻿@using SweetCreativity.Reposotories.Repos
+@model SweetCreativity.Core.Entities.Order
+
+<h1>Видалити замовлення</h1>
+<hr />
+
+<p>@Model.NameOrder</p>
+<p>@Model.Quantity</p>
+<p>@Model.TotalPrice</p>
+<p>@Model.CreatedAtOrder</p>
+<p>@Model.CustomerNumber</p>
+<p>@Model.CoverPath</p>
+<hr />
+<form asp-action="ConfirmDelete" class="col-md-4">
+    @Html.AntiForgeryToken()
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a href="/user/index" class="btn btn-outline-dark">Повернутися на сторінку замовлення/ Відмінити</a>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

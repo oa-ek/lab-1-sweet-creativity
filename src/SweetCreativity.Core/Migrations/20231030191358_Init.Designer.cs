@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20231024223111_Init")]
+    [Migration("20231030191358_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -161,11 +161,21 @@ namespace SweetCreativity.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CoverPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAtOrder")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CustomerNumber")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ListingId")
                         .HasColumnType("int");
+
+                    b.Property<string>("NameOrder")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -188,6 +198,32 @@ namespace SweetCreativity.Core.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CoverPath = "\\img\\user\\no_cover.jpg",
+                            CreatedAtOrder = new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9529),
+                            CustomerNumber = 985684335,
+                            ListingId = 1,
+                            NameOrder = "Торт Наполеон",
+                            Quantity = 1,
+                            TotalPrice = 250m,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CoverPath = "\\img\\user\\no_cover.jpg",
+                            CreatedAtOrder = new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9675),
+                            CustomerNumber = 985688735,
+                            ListingId = 2,
+                            NameOrder = "Торт Спартак",
+                            Quantity = 1,
+                            TotalPrice = 400m,
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Rating", b =>

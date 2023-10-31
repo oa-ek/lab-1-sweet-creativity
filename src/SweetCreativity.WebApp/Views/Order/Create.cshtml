@@ -1,0 +1,63 @@
+﻿﻿@using SweetCreativity.Core.Entities;
+@model Order
+
+<h1>Створення нового замовлення</h1>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="Create" enctype="multipart/form-data">
+
+            @Html.ValidationSummary()
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.NameOrder)
+                <input asp-for="NameOrder" class="form-control" />
+                <span asp-validation-for="NameOrder" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.Quantity)
+                @Html.TextAreaFor(model => model.Quantity, new { @class = "form-control"})
+                <span asp-validation-for="Quantity" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.TotalPrice)
+                @Html.TextAreaFor(model => model.TotalPrice, new { @class = "form-control"})
+                <span asp-validation-for="TotalPrice" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.CreatedAtOrder)
+                @Html.TextAreaFor(model => model.CreatedAtOrder, new { @class = "form-control"})
+                <span asp-validation-for="CreatedAtOrder" class="text-danger" />
+            </div>
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.CustomerNumber)
+                @Html.TextAreaFor(model => model.CustomerNumber, new { @class = "form-control"})
+                <span asp-validation-for="CustomerNumber" class="text-danger" />
+            </div>
+
+            <div class="form-group mt-3">
+                @Html.DisplayNameFor(model => model.CoverFile)
+                <input asp-for="CoverFile" accept="image/*" />
+                <span asp-validation-for="CoverFile" class="text-danger"></span>
+            </div>
+
+            <br />
+            <button type="submit" class="btn btn-success">Зберегти</button>
+
+        </form>
+
+    </div>
+</div>
+
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

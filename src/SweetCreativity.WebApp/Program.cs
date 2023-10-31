@@ -17,6 +17,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddScoped<IListingReposotory, ListingReposotory>();
 builder.Services.AddScoped<IUserReposotory, UserReposotory>();
+builder.Services.AddScoped<IOrderReposotory, OrderReposotory>();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
  

@@ -117,9 +117,12 @@ namespace SweetCreativity.Core.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    NameOrder = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CreatedAtOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CustomerNumber = table.Column<int>(type: "int", nullable: false),
+                    CoverPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true),
                     ListingId = table.Column<int>(type: "int", nullable: true),
                     StatusId = table.Column<int>(type: "int", nullable: true)
@@ -199,6 +202,15 @@ namespace SweetCreativity.Core.Migrations
                 {
                     { 1, 1, "\\img\\listing\\no_cover.jpg", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 1000 },
                     { 2, 2, "\\img\\listing\\no_cover.jpg", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.", "Rivne", 180, "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.", "Мафіни", 2, 80 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CoverPath", "CreatedAtOrder", "CustomerNumber", "ListingId", "NameOrder", "Quantity", "StatusId", "TotalPrice", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9529), 985684335, 1, "Торт Наполеон", 1, null, 250m, 1 },
+                    { 2, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 30, 21, 13, 58, 10, DateTimeKind.Local).AddTicks(9675), 985688735, 2, "Торт Спартак", 1, null, 400m, 2 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -15,7 +15,36 @@ namespace SweetCreativity.Core.Context
             seedListing(builder);
             seedCategory(builder);
             seedUser(builder);
+            seedOrder(builder);
         }
+        private static void seedOrder(ModelBuilder builder)
+        {
+            builder.Entity<Order>().HasData(
+                new Order
+                {
+                    Id = 1,
+                    NameOrder = "Торт Наполеон",
+                    Quantity = 1,
+                    TotalPrice = 250,
+                    CreatedAtOrder = DateTime.Now,
+                    CustomerNumber = 0985684335,
+                    UserId = 1,
+                    ListingId = 1,
+                },
+                new Order
+                {
+                    Id = 2,
+                    NameOrder = "Торт Спартак",
+                    Quantity = 1,
+                    TotalPrice = 400,
+                    CreatedAtOrder = DateTime.Now,
+                    CustomerNumber = 0985688735,
+                    UserId = 2,
+                    ListingId = 2,
+                }
+                );
+        }
+
         private static void seedUser(ModelBuilder builder)
         {
             builder.Entity<User>().HasData(
@@ -101,5 +130,6 @@ namespace SweetCreativity.Core.Context
                 );
         }
 
+ 
     }
 }
