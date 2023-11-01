@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SweetCreativity.Core.Context;
 using SweetCreativity.Core.Entities;
 using SweetCreativity.Reposotories.Interfaces;
 using SweetCreativity.Reposotories.Repos;
@@ -10,10 +12,12 @@ namespace SweetCreativity.WebApp.Controllers
     {
         private readonly IOrderReposotory orderReposotory;
         private readonly IWebHostEnvironment webHostEnvironment;
-        public OrderController(IOrderReposotory orderReposotory, IWebHostEnvironment webHostEnviroment)
+        private readonly SweetCreativityContext _context;
+        public OrderController(IOrderReposotory orderReposotory, IWebHostEnvironment webHostEnviroment, [FromServices] SweetCreativityContext context)
         {
             this.orderReposotory = orderReposotory;
             this.webHostEnvironment = webHostEnviroment;
+            this._context = context;
         }
         public IActionResult Index()
         {
@@ -24,9 +28,27 @@ namespace SweetCreativity.WebApp.Controllers
             return View(orderReposotory.Get(id));
         }
         [HttpGet]
-        public IActionResult Create()
+        //[HttpGet("Create/{listingId}")]
+        public IActionResult Create(int listingId)
         {
-            return View(new Order());
+            var listing = _context.Listings.FirstOrDefault(l => l.Id == listingId);
+
+            if (listing == null)
+            {
+                return NotFound();
+            }
+
+            var order = new Order
+            {
+                Listing = listing,
+                NameOrder = listing.Title,
+                PriceOne = listing.Price,
+                CoverFile = listing.CoverFile,
+                CoverPath = listing.CoverPath,
+                // Інші властивості order
+            };
+
+            return View(order);
         }
         [HttpPost]
         public IActionResult Create(Order model)

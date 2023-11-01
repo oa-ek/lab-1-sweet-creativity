@@ -12,7 +12,7 @@ using SweetCreativity.Core.Context;
 namespace SweetCreativity.Core.Migrations
 {
     [DbContext(typeof(SweetCreativityContext))]
-    [Migration("20231031194006_Init")]
+    [Migration("20231101034205_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -128,7 +128,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 1,
                             CategoryId = 1,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3239),
+                            CreatedAtListing = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6410),
                             Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
                             Location = "Lviv",
                             Price = 165,
@@ -142,7 +142,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 2,
                             CategoryId = 2,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3306),
+                            CreatedAtListing = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6468),
                             Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
                             Location = "Rivne",
                             Price = 180,
@@ -177,6 +177,9 @@ namespace SweetCreativity.Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("PriceOne")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -204,10 +207,11 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 1,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3841),
+                            CreatedAtOrder = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6917),
                             CustomerNumber = 985684335,
                             ListingId = 1,
                             NameOrder = "Торт Наполеон",
+                            PriceOne = 0m,
                             Quantity = 1,
                             TotalPrice = 250m,
                             UserId = 1
@@ -216,10 +220,11 @@ namespace SweetCreativity.Core.Migrations
                         {
                             Id = 2,
                             CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3856),
+                            CreatedAtOrder = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6922),
                             CustomerNumber = 985688735,
                             ListingId = 2,
                             NameOrder = "Торт Спартак",
+                            PriceOne = 0m,
                             Quantity = 1,
                             TotalPrice = 400m,
                             UserId = 2
@@ -383,7 +388,7 @@ namespace SweetCreativity.Core.Migrations
             modelBuilder.Entity("SweetCreativity.Core.Entities.Order", b =>
                 {
                     b.HasOne("SweetCreativity.Core.Entities.Listing", "Listing")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("ListingId");
 
                     b.HasOne("SweetCreativity.Core.Entities.Status", "Status")
@@ -442,6 +447,8 @@ namespace SweetCreativity.Core.Migrations
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.Listing", b =>
                 {
+                    b.Navigation("Orders");
+
                     b.Navigation("Ratings");
 
                     b.Navigation("Responses");

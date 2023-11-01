@@ -16,7 +16,8 @@ namespace SweetCreativity.Core.Entities
         public int Id { get; set; }
         public string NameOrder { get; set; }
 
-        public int Quantity { get; set; } 
+        public int Quantity { get; set; }
+        public decimal PriceOne { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime CreatedAtOrder { get; set; } = DateTime.Now;
         public int CustomerNumber { get; set; }
@@ -26,7 +27,7 @@ namespace SweetCreativity.Core.Entities
         public IFormFile? CoverFile { get; set; }
 
         public virtual User? User { get; set; }
-       public int? UserId { get; set; }
+        public int? UserId { get; set; }
         public virtual Listing? Listing { get; set; }
         public int? ListingId { get; set; }
 

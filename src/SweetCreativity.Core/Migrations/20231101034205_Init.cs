@@ -100,6 +100,7 @@ namespace SweetCreativity.Core.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NameOrder = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
+                    PriceOne = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CreatedAtOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CustomerNumber = table.Column<int>(type: "int", nullable: false),
@@ -207,17 +208,17 @@ namespace SweetCreativity.Core.Migrations
                 columns: new[] { "Id", "CategoryId", "CoverPath", "CreatedAtListing", "Description", "Location", "Price", "Product", "Title", "UserId", "Weight" },
                 values: new object[,]
                 {
-                    { 1, 1, "\\img\\listing\\no_cover.jpg", new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3239), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 1000 },
-                    { 2, 2, "\\img\\listing\\no_cover.jpg", new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3306), "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.", "Rivne", 180, "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.", "Мафіни", 2, 80 }
+                    { 1, 1, "\\img\\listing\\no_cover.jpg", new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6410), " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.", "Lviv", 165, "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).", "Торт Наполеон", 1, 1000 },
+                    { 2, 2, "\\img\\listing\\no_cover.jpg", new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6468), "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.", "Rivne", 180, "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.", "Мафіни", 2, 80 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Orders",
-                columns: new[] { "Id", "CoverPath", "CreatedAtOrder", "CustomerNumber", "ListingId", "NameOrder", "Quantity", "StatusId", "TotalPrice", "UserId" },
+                columns: new[] { "Id", "CoverPath", "CreatedAtOrder", "CustomerNumber", "ListingId", "NameOrder", "PriceOne", "Quantity", "StatusId", "TotalPrice", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3841), 985684335, 1, "Торт Наполеон", 1, null, 250m, 1 },
-                    { 2, "\\img\\user\\no_cover.jpg", new DateTime(2023, 10, 31, 21, 40, 6, 522, DateTimeKind.Local).AddTicks(3856), 985688735, 2, "Торт Спартак", 1, null, 400m, 2 }
+                    { 1, "\\img\\user\\no_cover.jpg", new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6917), 985684335, 1, "Торт Наполеон", 0m, 1, null, 250m, 1 },
+                    { 2, "\\img\\user\\no_cover.jpg", new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6922), 985688735, 2, "Торт Спартак", 0m, 1, null, 400m, 2 }
                 });
 
             migrationBuilder.CreateIndex(

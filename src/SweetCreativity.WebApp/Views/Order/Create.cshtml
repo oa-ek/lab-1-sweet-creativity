@@ -1,4 +1,4 @@
-﻿﻿@using SweetCreativity.Core.Entities;
+﻿@using SweetCreativity.Core.Entities;
 @model Order
 
 <h1>Створення нового замовлення</h1>
@@ -22,17 +22,13 @@
                 <span asp-validation-for="Quantity" class="text-danger" />
             </div>
 
-            <div data="mb-3">
-                @Html.DisplayNameFor(model => model.TotalPrice)
-                @Html.TextAreaFor(model => model.TotalPrice, new { @class = "form-control"})
-                <span asp-validation-for="TotalPrice" class="text-danger" />
-            </div>
+            
 
-            <div data="mb-3">
+            @*<div data="mb-3">
                 @Html.DisplayNameFor(model => model.CreatedAtOrder)
                 @Html.TextAreaFor(model => model.CreatedAtOrder, new { @class = "form-control"})
                 <span asp-validation-for="CreatedAtOrder" class="text-danger" />
-            </div>
+            </div>*@
 
             <div data="mb-3">
                 @Html.DisplayNameFor(model => model.CustomerNumber)
@@ -45,6 +41,41 @@
                 <input asp-for="CoverFile" accept="image/*" />
                 <span asp-validation-for="CoverFile" class="text-danger"></span>
             </div>
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#Quantity').on('input', function () {
+                        // Отримайте значення кількості та ціни за одиницю товару
+                        var quantity = parseInt($(this).val());
+                        var priceOne = parseFloat($('#PriceOne').val());
+
+                        // Обчисліть нову загальну ціну
+                        var totalPrice = quantity * priceOne;
+
+                        // Відобразіть нову ціну на сторінці
+                        $('#TotalPrice').text(totalPrice.toFixed(2)); //toFixed(2) для відображення двох знаків після коми
+
+                        // Опціонально: оновіть модель на сервері
+                        $('#TotalPriceHidden').val(totalPrice);
+                    });
+                });
+            </script>
+
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.PriceOne)
+                @Html.TextBoxFor(model => model.PriceOne, new { @class = "form-control", @readonly = "readonly", id = "PriceOne" })
+                <span asp-validation-for="PriceOne" class="text-danger" />
+            </div>
+
+
+            <div data="mb-3">
+                @Html.DisplayNameFor(model => model.TotalPrice)
+                <p>Загальна ціна: <span id="TotalPrice">0.00</span></p>
+                <input asp-for="TotalPrice" type="hidden" id="TotalPriceHidden" />
+            </div>
+
 
             <br />
             <button type="submit" class="btn btn-success">Зберегти</button>

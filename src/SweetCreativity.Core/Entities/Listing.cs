@@ -38,6 +38,7 @@ namespace SweetCreativity.Core.Entities
 
         public List<Rating>? Ratings { get; set; }
         //public virtual ICollection<Order> Orders { get; set; }
+        public List<Order>? Orders { get; set; }
         //public virtual ICollection<ListingImage> ListingImages { get; set; }
         //public virtual ICollection<Response> Responses { get; set; }
         public List<Response>? Responses { get; set; }

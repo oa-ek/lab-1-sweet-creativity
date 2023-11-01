@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using SweetCreativity.Core.Entities;
 
 namespace SweetCreativity.Core.Context;
@@ -65,6 +66,4 @@ public class SweetCreativityContext : DbContext
         modelBuilder.Seed();
         base.OnModelCreating(modelBuilder);
     }
-
-
 }
