@@ -22,9 +22,10 @@ namespace SweetCreativity.Core.Entities
         public DateTime CreatedAtOrder { get; set; } = DateTime.Now;
         public int CustomerNumber { get; set; }
 
-        public string? CoverPath { get; set; } = "\\img\\user\\no_cover.jpg";
-        [NotMapped]
-        public IFormFile? CoverFile { get; set; }
+        //public string? CoverPath { get; set; } = "\\img\\user\\no_cover.jpg";
+        //[NotMapped]
+        //public IFormFile? CoverFile { get; set; }
+        public string? ListingPhotoPath { get; set; }
 
         public virtual User? User { get; set; }
         public int? UserId { get; set; }

@@ -43,8 +43,8 @@ namespace SweetCreativity.WebApp.Controllers
                 Listing = listing,
                 NameOrder = listing.Title,
                 PriceOne = listing.Price,
-                CoverFile = listing.CoverFile,
-                CoverPath = listing.CoverPath,
+                ListingPhotoPath = listing.CoverPath,
+                //CoverPath = listing.CoverPath,
                 // Інші властивості order
             };
 
@@ -55,19 +55,19 @@ namespace SweetCreativity.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                string wwwRootPath = webHostEnvironment.WebRootPath;
+                //string wwwRootPath = webHostEnvironment.WebRootPath;
 
-                string fileName = Path.GetFileNameWithoutExtension(model.CoverFile.FileName);
+                //string fileName = Path.GetFileNameWithoutExtension(model.CoverFile.FileName);
 
-                string extension = Path.GetExtension(model.CoverFile.FileName);
-                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                model.CoverPath = "/img/user/" + fileName;
-                string path = Path.Combine(wwwRootPath + "/img/user/", fileName);
+                //string extension = Path.GetExtension(model.CoverFile.FileName);
+                //fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                //model.CoverPath = "/img/user/" + fileName;
+                //string path = Path.Combine(wwwRootPath + "/img/user/", fileName);
 
-                using (var fileStream = new FileStream(path, FileMode.Create))
-                {
-                    model.CoverFile.CopyTo(fileStream);
-                }
+                //using (var fileStream = new FileStream(path, FileMode.Create))
+                //{
+                //    model.CoverFile.CopyTo(fileStream);
+                //}
 
                 orderReposotory.Add(model);
                 return RedirectToAction(nameof(Index));

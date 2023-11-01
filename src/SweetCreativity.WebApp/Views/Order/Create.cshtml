@@ -10,6 +10,12 @@
 
             @Html.ValidationSummary()
 
+            <div class="form-group mt-3">
+                <label asp-for="ListingPhotoPath"></label>
+                <img src="@Model.ListingPhotoPath" alt="Фото оголошення" />
+                <input asp-for="ListingPhotoPath" type="hidden" />
+            </div>
+
             <div data="mb-3">
                 @Html.DisplayNameFor(model => model.NameOrder)
                 <input asp-for="NameOrder" class="form-control" />
@@ -22,24 +28,11 @@
                 <span asp-validation-for="Quantity" class="text-danger" />
             </div>
 
-            
-
-            @*<div data="mb-3">
-                @Html.DisplayNameFor(model => model.CreatedAtOrder)
-                @Html.TextAreaFor(model => model.CreatedAtOrder, new { @class = "form-control"})
-                <span asp-validation-for="CreatedAtOrder" class="text-danger" />
-            </div>*@
 
             <div data="mb-3">
                 @Html.DisplayNameFor(model => model.CustomerNumber)
                 @Html.TextAreaFor(model => model.CustomerNumber, new { @class = "form-control"})
                 <span asp-validation-for="CustomerNumber" class="text-danger" />
-            </div>
-
-            <div class="form-group mt-3">
-                @Html.DisplayNameFor(model => model.CoverFile)
-                <input asp-for="CoverFile" accept="image/*" />
-                <span asp-validation-for="CoverFile" class="text-danger"></span>
             </div>
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

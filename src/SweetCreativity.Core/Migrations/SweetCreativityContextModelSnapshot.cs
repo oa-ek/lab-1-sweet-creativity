@@ -125,7 +125,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 1,
                             CategoryId = 1,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6410),
+                            CreatedAtListing = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(2686),
                             Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
                             Location = "Lviv",
                             Price = 165,
@@ -139,7 +139,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 2,
                             CategoryId = 2,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6468),
+                            CreatedAtListing = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(2753),
                             Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
                             Location = "Rivne",
                             Price = 180,
@@ -158,9 +158,6 @@ namespace SweetCreativity.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CoverPath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedAtOrder")
                         .HasColumnType("datetime2");
 
@@ -169,6 +166,9 @@ namespace SweetCreativity.Core.Migrations
 
                     b.Property<int?>("ListingId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ListingPhotoPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameOrder")
                         .IsRequired()
@@ -203,8 +203,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 1,
-                            CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6917),
+                            CreatedAtOrder = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(3033),
                             CustomerNumber = 985684335,
                             ListingId = 1,
                             NameOrder = "Торт Наполеон",
@@ -216,8 +215,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 2,
-                            CoverPath = "\\img\\user\\no_cover.jpg",
-                            CreatedAtOrder = new DateTime(2023, 11, 1, 5, 42, 5, 510, DateTimeKind.Local).AddTicks(6922),
+                            CreatedAtOrder = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(3040),
                             CustomerNumber = 985688735,
                             ListingId = 2,
                             NameOrder = "Торт Спартак",
