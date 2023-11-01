@@ -22,8 +22,17 @@ namespace SweetCreativity.WebApp.Controllers
         }
         public IActionResult Index()
         {
-            return View(orderReposotory.GetAll());
+            var orders = orderReposotory.GetAll();
+            var statusList = _context.Statuses.ToList();
+
+            foreach (var order in orders)
+            {
+                order.Status = statusList.FirstOrDefault(s => s.Id == order.StatusId);
+            }
+
+            return View(orders);
         }
+
         public IActionResult Details(int id)
         {
             var order = _context.Orders.Find(id);
@@ -119,8 +128,9 @@ namespace SweetCreativity.WebApp.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Details", new { id });
+            return RedirectToAction("Index");
         }
+
     }
 
 

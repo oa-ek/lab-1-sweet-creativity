@@ -125,7 +125,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 1,
                             CategoryId = 1,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(2686),
+                            CreatedAtListing = new DateTime(2023, 11, 1, 19, 37, 24, 219, DateTimeKind.Local).AddTicks(5263),
                             Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
                             Location = "Lviv",
                             Price = 165,
@@ -139,7 +139,7 @@ namespace SweetCreativity.Core.Migrations
                             Id = 2,
                             CategoryId = 2,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(2753),
+                            CreatedAtListing = new DateTime(2023, 11, 1, 19, 37, 24, 219, DateTimeKind.Local).AddTicks(5332),
                             Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
                             Location = "Rivne",
                             Price = 180,
@@ -203,7 +203,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAtOrder = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(3033),
+                            CreatedAtOrder = new DateTime(2023, 11, 1, 19, 37, 24, 219, DateTimeKind.Local).AddTicks(5772),
                             CustomerNumber = 985684335,
                             ListingId = 1,
                             NameOrder = "Торт Наполеон",
@@ -215,7 +215,7 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAtOrder = new DateTime(2023, 11, 1, 16, 6, 27, 572, DateTimeKind.Local).AddTicks(3040),
+                            CreatedAtOrder = new DateTime(2023, 11, 1, 19, 37, 24, 219, DateTimeKind.Local).AddTicks(5779),
                             CustomerNumber = 985688735,
                             ListingId = 2,
                             NameOrder = "Торт Спартак",
@@ -290,12 +290,30 @@ namespace SweetCreativity.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("IsComplicted")
-                        .HasColumnType("bit");
+                    b.Property<string>("StatusName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Statuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            StatusName = "Прийнято"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            StatusName = "Виконується"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            StatusName = "Не прийнято"
+                        });
                 });
 
             modelBuilder.Entity("SweetCreativity.Core.Entities.User", b =>

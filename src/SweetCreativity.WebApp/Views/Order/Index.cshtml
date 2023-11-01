@@ -22,7 +22,6 @@
                     <div class="card-body">
                         <h5 class="card-title">@order.NameOrder</h5>
                         <p class="card-text">@order.Quantity</p>
-                        @*<p class="card-text">Статус: @order.Status.StatusName</p>*@
                         <p class="card-text">Статус: @(order.Status != null ? order.Status.StatusName : "Немає статусу")</p>
                         <a href="/order/details/@order.Id" class="btn btn-outline-primary">Детальніше</a>
                     </div>
