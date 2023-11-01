@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SweetCreativity.Core.Context;
 using SweetCreativity.Core.Entities;
@@ -25,6 +26,13 @@ namespace SweetCreativity.WebApp.Controllers
         }
         public IActionResult Details(int id)
         {
+            var order = _context.Orders.Find(id);
+
+            // Отримати список статусів з бази даних
+            var statusList = _context.Statuses.ToList();
+
+            // Передати список статусів у ViewBag
+            ViewBag.StatusList = new SelectList(statusList, "Id", "StatusName");
             return View(orderReposotory.Get(id));
         }
         [HttpGet]
@@ -87,7 +95,34 @@ namespace SweetCreativity.WebApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        ////[HttpPost]
+        ////public IActionResult UpdateStatus(int id, int statusId)
+        ////{
+        ////    var order = _orderRepository.Get(id);
+        ////    if (order != null)
+        ////    {
+        ////        order.StatusId = statusId;
+        ////        _orderRepository.Update(order);
+        ////    }
+
+        ////    return RedirectToAction("Details", new { id });
+        ////}
+        ///
+        [HttpPost]
+        public IActionResult UpdateStatus(int id, int statusId)
+        {
+            var order = _context.Orders.Find(id);
+            if (order != null)
+            {
+                order.StatusId = statusId;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { id });
+        }
     }
+
 
 
 }

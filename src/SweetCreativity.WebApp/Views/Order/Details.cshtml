@@ -47,6 +47,25 @@
         <button type="submit" class="btn btn-danger">Видалити</button>
     </form>
 </div>
+
+@*<form method="post" asp-action="UpdateStatus" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label for="Status">Статус:</label>
+        <select class="form-control" id="Status" asp-for="StatusId" asp-items="ViewBag.StatusList">
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Зберегти статус</button>
+</form>*@
+<form method="post" asp-action="UpdateStatus" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label for="Status">Статус:</label>
+        <select class="form-control" id="Status" asp-for="StatusId" asp-items="ViewBag.StatusList" style="max-height: 150px; overflow-y: auto;">
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Зберегти статус</button>
+</form>
+
+
 </div>
 
 

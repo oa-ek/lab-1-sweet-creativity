@@ -51,6 +51,15 @@ namespace SweetCreativity.Reposotories.Repos
         {
             _context.Orders.Update(obj);
         }
-    }
-}
 
+        public void UpdateStatus(int orderId, int statusId)
+        {
+            var order = _context.Orders.Find(orderId);
+            if (order != null)
+            {
+                order.StatusId = statusId;
+                _context.SaveChanges();
+            }
+        }
+}
+    }

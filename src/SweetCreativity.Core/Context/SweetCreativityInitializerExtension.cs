@@ -16,6 +16,29 @@ namespace SweetCreativity.Core.Context
             seedCategory(builder);
             seedUser(builder);
             seedOrder(builder);
+            seedStatus(builder);
+        }
+        private static void seedStatus(ModelBuilder builder)
+        {
+            builder.Entity<Status>().HasData(
+                new Status
+                {
+                    Id = 1,
+                    StatusName = "Прийнято"
+                },
+                 new Status
+                 {
+                     Id = 2,
+                     StatusName = "Виконується"
+                 },
+                new Status
+                {
+                    Id = 3,
+                    StatusName = "Не прийнято"
+                }
+                );
+
+                
         }
         private static void seedOrder(ModelBuilder builder)
         {

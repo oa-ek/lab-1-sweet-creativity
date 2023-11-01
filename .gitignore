@@ -362,3 +362,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+src/SweetCreativity.Core/Migrations/20231101034205_Init.cs
+src/SweetCreativity.Core/Migrations/20231101034205_Init.cs
+src/SweetCreativity.Core/Migrations/20231101034205_Init.Designer.cs
+src/SweetCreativity.Core/Migrations/20231101140627_Init.cs
+src/SweetCreativity.Core/Migrations/20231101140627_Init.Designer.cs
+src/SweetCreativity.Core/Migrations/20231101034205_Init.cs
+*.cs
