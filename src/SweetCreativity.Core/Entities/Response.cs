@@ -17,7 +17,7 @@ namespace SweetCreativity.Core.Entities
         public DateTime CreatedAtResponse { get; set; } = DateTime.Now;
 
         public virtual User? User { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public virtual Listing? Listing { get; set; }
         public int? ListingId { get; set; }
         //public Rating RatingId { get; set; }

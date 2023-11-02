@@ -32,7 +32,7 @@ namespace SweetCreativity.Core.Entities
 
 
         public virtual User? User { get; set; } //з таблички юзер витягується юзкр id
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public virtual Category? Category { get; set; }
         public int? CategoryId { get; set; }
 
@@ -42,5 +42,10 @@ namespace SweetCreativity.Core.Entities
         //public virtual ICollection<ListingImage> ListingImages { get; set; }
         //public virtual ICollection<Response> Responses { get; set; }
         public List<Response>? Responses { get; set; }
+
+        public virtual User? Owner { get; set; }
+        [ForeignKey(nameof(Owner))]
+        public string? OwnerId { get; set; }
+
     }
 }

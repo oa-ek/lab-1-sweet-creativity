@@ -1,18 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using SweetCreativity.Core.Entities;
 
 namespace SweetCreativity.Core.Context;
 
-public class SweetCreativityContext : DbContext
+public class SweetCreativityContext : IdentityDbContext<User>
 {
     public SweetCreativityContext(DbContextOptions<SweetCreativityContext> options)
         : base(options)
     {
 
     }
-
-
     public DbSet<User> Users => Set<User>();
     public DbSet<Listing> Listings => Set<Listing>();
     public DbSet<Order> Orders => Set<Order>();

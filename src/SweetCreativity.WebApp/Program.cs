@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SweetCreativity.Core.Context;
+using SweetCreativity.Core.Entities;
 using SweetCreativity.Reposotories.Interfaces;
 using SweetCreativity.Reposotories.Repos;
 
@@ -12,9 +13,18 @@ builder.Services.AddDbContext<SweetCreativityContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<User>(options => 
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 4;
+    }).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<SweetCreativityContext>();
 
+//builder.Services.AddSingleton<UserManager<User>>();
 builder.Services.AddScoped<IListingReposotory, ListingReposotory>();
 builder.Services.AddScoped<IUserReposotory, UserReposotory>();
 builder.Services.AddScoped<IOrderReposotory, OrderReposotory>();

@@ -87,45 +87,45 @@ namespace SweetCreativity.WebApp.Controllers
             return View(item);
         }
 
-        [HttpPost]
-        public IActionResult Edit(User item)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var existingItem = userReposotory.Get(item.Id);
+        //[HttpPost]
+        //public IActionResult Edit(User item)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            var existingItem = userReposotory.Get(item.Id);
 
-                    if (existingItem != null)
-                    {
-                        existingItem.UserName = item.UserName;
-                        existingItem.Email = item.Email;
-                        existingItem.Password = item.Password;
-                        existingItem.FullName = item.FullName;
-                        existingItem.PhoneNumber = item.PhoneNumber;
-                        existingItem.UrlSocialnetwork = item.UrlSocialnetwork;
+        //            if (existingItem != null)
+        //            {
+        //                existingItem.UserName = item.UserName;
+        //                existingItem.Email = item.Email;
+        //                existingItem.Password = item.Password;
+        //                existingItem.FullName = item.FullName;
+        //                existingItem.PhoneNumber = item.PhoneNumber;
+        //                existingItem.UrlSocialnetwork = item.UrlSocialnetwork;
 
-                        userReposotory.Update(existingItem);
-                        userReposotory.Save();
+        //                userReposotory.Update(existingItem);
+        //                userReposotory.Save();
 
-                        return RedirectToAction(nameof(Index));
-                    }
-                    else
-                    {
-                        // Якщо запис не знайдено, обробіть це відповідним чином
-                        return NotFound();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Обробте помилку при оновленні даних, якщо вона виникла
-                    // Виведіть або збережіть повідомлення про помилку для подальшого аналізу
-                    // Ви можете також відправити користувачеві повідомлення про помилку, якщо це потрібно
-                    return View(item);
-                }
-            }
-            return View(item);
-        }
+        //                return RedirectToAction(nameof(Index));
+        //            }
+        //            else
+        //            {
+        //                // Якщо запис не знайдено, обробіть це відповідним чином
+        //                return NotFound();
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Обробте помилку при оновленні даних, якщо вона виникла
+        //            // Виведіть або збережіть повідомлення про помилку для подальшого аналізу
+        //            // Ви можете також відправити користувачеві повідомлення про помилку, якщо це потрібно
+        //            return View(item);
+        //        }
+        //    }
+        //    return View(item);
+        //}
 
 
     }
