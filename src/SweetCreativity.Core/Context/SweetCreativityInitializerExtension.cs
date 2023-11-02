@@ -174,44 +174,47 @@ namespace SweetCreativity.Core.Context
             var admin = new User
             {
                 Id = ADMIN_ID,
-                UserName = "Тетяна2.0",
+                UserName = "taniabondar@gmail.com",
                 Email = "taniabondar@gmail.com",
                 //Password = "2.0taniab",
                 FullName = "Тетяна Бондар",
                 PhoneNumber = 0985674335,
                 UrlSocialnetwork = "@taniabondar23",
+                EmailConfirmed = true,
                 NormalizedEmail = "ADMIN@SWEETCREATIVITY.COM",
                 NormalizedUserName = "ADMIN@SWEETCREATIVITY.COM"
             };
             var client = new User
             {
                 Id = CLIENT_ID,
-                UserName = "ОленаT",
+                UserName = "olenatkachuk@gmail.com",
                 Email = "olenatkachuk@gmail.com",
                 //Password = "123olenatt",
                 FullName = "Олена Ткачук",
                 PhoneNumber = 0986390482,
                 UrlSocialnetwork = "@olena_tkachuk",
+                EmailConfirmed = true,
                 NormalizedEmail = "CLIENT@SWEETCREATIVITY.COM",
                 NormalizedUserName = "CLIENT@SWEETCREATIVITY.COM"
             };
             var seller = new User
             {
                 Id = SELLER_ID,
-                UserName = "Адріан_Мельник",
+                UserName = "melnykadrian@gmail.com",
                 Email = "melnykadrian@gmail.com",
                 //Password = "melnyk456",
                 FullName = "Адріан Мельник",
                 PhoneNumber = 0984568310,
                 UrlSocialnetwork = "@adriannmelnykk",
+                EmailConfirmed = true,
                 NormalizedEmail = "SELLER@SWEETCREATIVITY.COM",
                 NormalizedUserName = "SELLER@SWEETCREATIVITY.COM"
             };
 
             PasswordHasher<User> hasher = new PasswordHasher<User>();
             admin.PasswordHash = hasher.HashPassword(admin, "admin$pass");
-            client.PasswordHash = hasher.HashPassword(client, "admin$pass");
-            seller.PasswordHash = hasher.HashPassword(seller, "admin$pass");
+            client.PasswordHash = hasher.HashPassword(client, "client$pass");
+            seller.PasswordHash = hasher.HashPassword(seller, "seller$pass");
 
             builder.Entity<User>().HasData(admin, client, seller);
 

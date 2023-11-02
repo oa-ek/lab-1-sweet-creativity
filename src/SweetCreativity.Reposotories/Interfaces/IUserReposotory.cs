@@ -9,7 +9,7 @@ namespace SweetCreativity.Reposotories.Interfaces
 {
     public interface IUserReposotory : ISave
     {
-        User Get(int id);
+        User Get(string id);
         IEnumerable<User> GetAll();
         void Add(User obj);
         void Update(User obj);

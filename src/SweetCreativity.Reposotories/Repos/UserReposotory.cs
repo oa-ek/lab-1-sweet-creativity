@@ -29,7 +29,7 @@ namespace SweetCreativity.Reposotories.Repos
             Save();
         }
 
-        public User Get(int id)
+        public User Get(string id)
         {
            return _context.Users.Find(id);
             //return _context.Set<Listing>().Find(id);

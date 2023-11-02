@@ -25,7 +25,7 @@ namespace SweetCreativity.Reposotories.Repos
             throw new NotImplementedException();
         }
 
-        public User Get(int id)
+        public User Get(string id)
         {
             throw new NotImplementedException();
         }

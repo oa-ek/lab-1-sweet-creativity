@@ -20,7 +20,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequireLowercase = false;
     options.Password.RequireUppercase = false;
     options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequiredLength = 4;
+    //options.Password.RequiredLength = 4;
     }).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<SweetCreativityContext>();
 

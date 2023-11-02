@@ -27,7 +27,7 @@ namespace SweetCreativity.WebApp.Controllers
             return View(userReposotory.GetAll());
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
             return View(userReposotory.Get(id));
         }
@@ -63,7 +63,7 @@ namespace SweetCreativity.WebApp.Controllers
         
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             return View(userReposotory.Get(id));
         }
@@ -76,7 +76,7 @@ namespace SweetCreativity.WebApp.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
             User item = userReposotory.Get(id); // Отримуємо елемент за його ID
             if (item == null)
