@@ -12,7 +12,7 @@ public class SweetCreativityContext : IdentityDbContext<User>
     {
 
     }
-    public DbSet<User> Users => Set<User>();
+    //public DbSet<User> Users => Set<User>();
     public DbSet<Listing> Listings => Set<Listing>();
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<Status> Statuses => Set<Status>();

@@ -14,10 +14,10 @@ namespace SweetCreativity.Core.Context
         public static void Seed(this ModelBuilder builder)
         {
             (string admId, string clId, string selId) = seedUsersAndRoles(builder);
-            seedListing(builder, new string[] {selId, admId});
+            seedListing(builder, new string[] { selId, admId });
             seedCategory(builder);
             //seedUser(builder);
-            seedOrder(builder);
+            seedOrder(builder, new string[] { clId, admId });
             seedStatus(builder);
         }
         private static void seedStatus(ModelBuilder builder)
@@ -40,9 +40,9 @@ namespace SweetCreativity.Core.Context
                 }
                 );
 
-                
+
         }
-        private static void seedOrder(ModelBuilder builder)
+        private static void seedOrder(ModelBuilder builder, string[] clientIds)
         {
             builder.Entity<Order>().HasData(
                 new Order
@@ -53,7 +53,7 @@ namespace SweetCreativity.Core.Context
                     TotalPrice = 250,
                     CreatedAtOrder = DateTime.Now,
                     CustomerNumber = 0985684335,
-                    UserId = "SELLER_ID",
+                    UserId = clientIds[0],
                     ListingId = 1,
                 },
                 new Order
@@ -64,7 +64,7 @@ namespace SweetCreativity.Core.Context
                     TotalPrice = 400,
                     CreatedAtOrder = DateTime.Now,
                     CustomerNumber = 0985688735,
-                    UserId = "SELLER_ID",
+                    UserId = clientIds[1],
                     ListingId = 2,
                 }
                 );
@@ -136,10 +136,9 @@ namespace SweetCreativity.Core.Context
                   Product = "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).",
                   Location = "Lviv",
                   CategoryId = 1,
-                  UserId = "SELLER_ID",
+                  UserId = sellerIds[0],
                   Price = 165,
                   Weight = 1000,
-                  OwnerId = sellerIds[0]
               },
               new Listing
               {
@@ -149,10 +148,9 @@ namespace SweetCreativity.Core.Context
                   Product = "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.",
                   Location = "Rivne",
                   CategoryId = 2,
-                  UserId = "SELLER_ID",
+                  UserId = sellerIds[1],
                   Price = 180,
                   Weight = 80,
-                  OwnerId= sellerIds[1]
               }
                 );
         }

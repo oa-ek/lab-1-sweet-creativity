@@ -43,9 +43,9 @@ namespace SweetCreativity.Core.Entities
         //public virtual ICollection<Response> Responses { get; set; }
         public List<Response>? Responses { get; set; }
 
-        public virtual User? Owner { get; set; }
-        [ForeignKey(nameof(Owner))]
-        public string? OwnerId { get; set; }
+        //public virtual User? Owner { get; set; }
+        //[ForeignKey(nameof(Owner))]
+        //public string? OwnerId { get; set; }
 
     }
 }
