@@ -369,3 +369,5 @@ src/SweetCreativity.Core/Migrations/20231101140627_Init.cs
 src/SweetCreativity.Core/Migrations/20231101140627_Init.Designer.cs
 src/SweetCreativity.Core/Migrations/20231101034205_Init.cs
 *.cs
+src/SweetCreativity.WebApp/SweetCreativity.WebApp.csproj
+src/SweetCreativity.WebApp/Views/User/Delete.cshtml

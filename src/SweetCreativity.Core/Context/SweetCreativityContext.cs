@@ -15,10 +15,12 @@ public class SweetCreativityContext : IdentityDbContext<User>
     //public DbSet<User> Users => Set<User>();
     public DbSet<Listing> Listings => Set<Listing>();
     public DbSet<Order> Orders => Set<Order>();
+    public DbSet<Construction> Constructions => Set<Construction>();
     public DbSet<Status> Statuses => Set<Status>();
     public DbSet<Category> Categories => Set<Category>();
 
     public DbSet<Response> Responses => Set<Response>();
+    public DbSet<Comment> Comments => Set<Comment>();
     public DbSet<Rating> Ratings => Set<Rating>();
     //public DbSet<ListingImage> ListingImages => Set<ListingImage>();
 
@@ -46,11 +48,23 @@ public class SweetCreativityContext : IdentityDbContext<User>
     .HasForeignKey(o => o.StatusId)
     .OnDelete(DeleteBehavior.Cascade);// Зовнішній ключ у таблиці Orders
 
+        modelBuilder.Entity<Construction>()
+    .HasOne(c => c.Status)  // Кожен Construction має один Status
+    .WithMany(c => c.Constructions) // У Status може бути багато Constructions
+    .HasForeignKey(c => c.StatusId)
+    .OnDelete(DeleteBehavior.Cascade);// Зовнішній ключ у таблиці Constructions
+
         modelBuilder.Entity<Order>()
-   .HasOne(o => o.User)  // Кожен Order має один Status
-   .WithMany(o => o.Orders) // У Status може бути багато Orders
+   .HasOne(o => o.User)  
+   .WithMany(o => o.Orders) 
    .HasForeignKey(o => o.UserId)
-   .OnDelete(DeleteBehavior.NoAction);// Зовнішній ключ у таблиці Orders
+   .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Construction>()
+   .HasOne(o => o.User)
+   .WithMany(o => o.Constructions)
+   .HasForeignKey(o => o.UserId)
+   .OnDelete(DeleteBehavior.NoAction);
 
         modelBuilder.Entity<User>()
     .Property(u => u.Email)

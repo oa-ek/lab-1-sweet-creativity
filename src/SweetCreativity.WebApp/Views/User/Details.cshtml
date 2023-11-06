@@ -6,8 +6,11 @@
 @{
     ViewData["Title"] = Model.UserName;
 }
-
 <h1>Користувач</h1>
+<p>
+    <a asp-controller="Construction" asp-action="Create" class="btn btn-primary">Зробити індивідуальне замовлення</a>
+</p>
+
 <div class="row col-4">
     <img src="@Model.CoverPath" class="card-img-top" alt="@Model.UserName">
 </div>
@@ -53,6 +56,25 @@
         </form>
     </div>
 </div>
+
+<h2>Оголошення користувача</h2>
+<div class="row">
+    @foreach (var listing in Model.Listings)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="card" style="width: 18rem;">
+                <img src="@listing.CoverPath" class="card-img-top" alt="@listing.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@listing.Title</h5>
+                    <p class="card-text">@listing.Description</p>
+                    <a href="/listing/details/@listing.Id" class="btn btn-outline-primary">Детальніше</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
 
 
 </div>

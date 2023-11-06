@@ -14,11 +14,13 @@ namespace SweetCreativity.WebApp.Controllers
         private readonly IOrderReposotory orderReposotory;
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly SweetCreativityContext _context;
-        public OrderController(IOrderReposotory orderReposotory, IWebHostEnvironment webHostEnviroment, [FromServices] SweetCreativityContext context)
+        private readonly IConstructionReposotory constructionReposotory;
+        public OrderController(IOrderReposotory orderReposotory, IWebHostEnvironment webHostEnviroment, [FromServices] SweetCreativityContext context, IConstructionReposotory constructionReposotory)
         {
             this.orderReposotory = orderReposotory;
             this.webHostEnvironment = webHostEnviroment;
             this._context = context;
+            this.constructionReposotory = constructionReposotory;
         }
         public IActionResult Index()
         {
@@ -33,6 +35,7 @@ namespace SweetCreativity.WebApp.Controllers
             return View(orders);
         }
 
+
         public IActionResult Details(int id)
         {
             var order = _context.Orders.Find(id);
@@ -44,6 +47,7 @@ namespace SweetCreativity.WebApp.Controllers
             ViewBag.StatusList = new SelectList(statusList, "Id", "StatusName");
             return View(orderReposotory.Get(id));
         }
+
         [HttpGet]
         //[HttpGet("Create/{listingId}")]
         public IActionResult Create(int listingId)

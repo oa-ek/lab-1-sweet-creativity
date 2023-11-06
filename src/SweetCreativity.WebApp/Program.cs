@@ -28,6 +28,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
 builder.Services.AddScoped<IListingReposotory, ListingReposotory>();
 builder.Services.AddScoped<IUserReposotory, UserReposotory>();
 builder.Services.AddScoped<IOrderReposotory, OrderReposotory>();
+builder.Services.AddScoped<IConstructionReposotory, ConstructionReposotory>();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
  
@@ -49,7 +50,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

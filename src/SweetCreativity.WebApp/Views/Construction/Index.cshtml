@@ -1,0 +1,25 @@
+﻿@model IEnumerable<SweetCreativity.Core.Entities.Construction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Індивідуальні замовлення</h1>
+
+<div class="row">
+    @foreach (var construction in Model)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="card" style="width: 18rem;">
+                <img src="@construction.CoverPath" class="card-img-top" alt="@construction.NameConstruction">
+                <div class="card-body">
+                    <h5 class="card-title">@construction.NameConstruction</h5>
+                    <p class="card-text">@construction.Quantity</p>
+                    <p class="card-text">Статус: @(construction.Status != null ? construction.Status.StatusName : "Немає статусу")</p>
+                    <a href="/construction/details/@construction.Id" class="btn btn-outline-primary">Детальніше</a>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

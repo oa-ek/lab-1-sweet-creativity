@@ -181,8 +181,8 @@ namespace SweetCreativity.Core.Context
                 PhoneNumber = 0985674335,
                 UrlSocialnetwork = "@taniabondar23",
                 EmailConfirmed = true,
-                NormalizedEmail = "ADMIN@SWEETCREATIVITY.COM",
-                NormalizedUserName = "ADMIN@SWEETCREATIVITY.COM"
+                NormalizedEmail = "TANIABONDAR@GMAIL.COM",
+                NormalizedUserName = "TANIABONDAR@GMAIL.COM"
             };
             var client = new User
             {
@@ -194,8 +194,8 @@ namespace SweetCreativity.Core.Context
                 PhoneNumber = 0986390482,
                 UrlSocialnetwork = "@olena_tkachuk",
                 EmailConfirmed = true,
-                NormalizedEmail = "CLIENT@SWEETCREATIVITY.COM",
-                NormalizedUserName = "CLIENT@SWEETCREATIVITY.COM"
+                NormalizedEmail = "OLENATKACHUK@GMAIL.COM",
+                NormalizedUserName = "OLENATKACHUK@GMAIL.COM"
             };
             var seller = new User
             {
@@ -207,8 +207,8 @@ namespace SweetCreativity.Core.Context
                 PhoneNumber = 0984568310,
                 UrlSocialnetwork = "@adriannmelnykk",
                 EmailConfirmed = true,
-                NormalizedEmail = "SELLER@SWEETCREATIVITY.COM",
-                NormalizedUserName = "SELLER@SWEETCREATIVITY.COM"
+                NormalizedEmail = "MELNYKADRIAN@GMAIL.COM",
+                NormalizedUserName = "MELNYKADRIAN@GMAIL.COM"
             };
 
             PasswordHasher<User> hasher = new PasswordHasher<User>();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Core.Types;
@@ -15,22 +16,51 @@ namespace SweetCreativity.WebApp.Controllers
     {
         private readonly IUserReposotory userReposotory;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly SweetCreativityContext _context;
 
         public UserController(IUserReposotory userReposotory,
-            IWebHostEnvironment webHostEnviroment)
+            IWebHostEnvironment webHostEnviroment, [FromServices] SweetCreativityContext context)
         {
             this.userReposotory = userReposotory;
             this.webHostEnvironment = webHostEnviroment;
+            this._context = context;
         }
         public IActionResult Index()
         {
             return View(userReposotory.GetAll());
         }
 
+        //public IActionResult Details(string id)
+        //{
+        //    return View(userReposotory.Get(id));
+        //}
+
         public IActionResult Details(string id)
         {
-            return View(userReposotory.Get(id));
+            //var user = userReposotory.Get(id);
+            //if (user != null)
+            //{
+            //    // Отримати оголошення користувача, використовуючи контекст даних
+            //    user.Listings = DbContext.Listings.Where(listing => listing.UserId == user.Id).ToList();
+            //    return View(user);
+            //}
+            //return NotFound();
+
+            ////////////////////////////////
+            var user = _context.Users
+                .Include(l => l.Listings)
+                .FirstOrDefault(l => l.Id == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            
+            return View(user);
         }
+    
+
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -126,7 +156,16 @@ namespace SweetCreativity.WebApp.Controllers
         //    }
         //    return View(item);
         //}
+        //public IActionResult MyListings()
+        //{
+        //    // Отримуємо ідентифікатор поточного користувача
+        //    var userId = userManager.GetUserId(User);
 
+        //    // Отримуємо оголошення поточного користувача
+        //    var user = userReposotory.Get(userId);
+
+        //    return View(user.Listings);
+        //}
 
     }
 

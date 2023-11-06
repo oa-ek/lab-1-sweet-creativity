@@ -15,7 +15,6 @@ namespace SweetCreativity.Core.Entities
     {
         public string UserName { get; set; } 
         public string Email { get; set; } 
-        //public string Password { get; set; } 
         public string FullName { get; set; } 
         public int PhoneNumber { get; set; }
         public string UrlSocialnetwork { get; set; }
@@ -23,9 +22,11 @@ namespace SweetCreativity.Core.Entities
         [NotMapped]
         public IFormFile? CoverFile { get; set; }
 
-        public virtual ICollection<Listing>? Listings { get; set; } // один до багатьох(1 користувач може мати багато оголошень)
+        //public virtual ICollection<Listing>? Listings { get; set; } // один до багатьох(1 користувач може мати багато оголошень)
+        public List<Listing>? Listings { get; set; }
         public virtual ICollection<Rating>? Ratings { get; set; }
         public virtual ICollection<Order>? Orders { get; set; }
+        public virtual ICollection<Construction>? Constructions { get; set; }
         public virtual ICollection<Response>? Responses { get; set; }
     }
 }
