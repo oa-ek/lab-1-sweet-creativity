@@ -13,11 +13,11 @@ namespace SweetCreativity.Core.Entities
 {
     public class User : IdentityUser
     {
-        public string UserName { get; set; } 
-        public string Email { get; set; } 
-        public string FullName { get; set; } 
-        public int PhoneNumber { get; set; }
-        public string UrlSocialnetwork { get; set; }
+        //public string FirstName { get; set; } 
+        public string? Email { get; set; } 
+        public string? FullName { get; set; } 
+        public int? PhoneNumber { get; set; }
+        public string? UrlSocialnetwork { get; set; }
         public string? CoverPath { get; set; } = "\\img\\user\\no_cover.jpg";
         [NotMapped]
         public IFormFile? CoverFile { get; set; }

@@ -51,19 +51,19 @@ namespace SweetCreativity.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "89dc89bc-1acc-4e7c-ad32-750c8e17ab00",
+                            Id = "bb6ca491-80f7-4b27-8fd5-f6f951bfd83b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d389d55d-5f72-4fb7-afdd-f508fc8cd438",
+                            Id = "45d8d6fb-7280-437e-8270-2e6b89d15867",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-                            Id = "abfbcb1f-af82-4604-98d2-b32bdb04eee8",
+                            Id = "3a05ece2-b99b-4746-a7a3-68b54e2ad82f",
                             Name = "Seller",
                             NormalizedName = "SELLER"
                         });
@@ -160,23 +160,23 @@ namespace SweetCreativity.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "06b8dc0e-e41e-4b05-88ea-de5b83310991",
-                            RoleId = "89dc89bc-1acc-4e7c-ad32-750c8e17ab00"
+                            UserId = "4bcea3b6-fd74-47b9-8c46-70908bd4afce",
+                            RoleId = "bb6ca491-80f7-4b27-8fd5-f6f951bfd83b"
                         },
                         new
                         {
-                            UserId = "06b8dc0e-e41e-4b05-88ea-de5b83310991",
-                            RoleId = "abfbcb1f-af82-4604-98d2-b32bdb04eee8"
+                            UserId = "4bcea3b6-fd74-47b9-8c46-70908bd4afce",
+                            RoleId = "3a05ece2-b99b-4746-a7a3-68b54e2ad82f"
                         },
                         new
                         {
-                            UserId = "5a752c09-cf8f-4142-9a90-9f3a84a59ddd",
-                            RoleId = "abfbcb1f-af82-4604-98d2-b32bdb04eee8"
+                            UserId = "ce21d04c-a441-4c40-adb1-7a0d325b112f",
+                            RoleId = "3a05ece2-b99b-4746-a7a3-68b54e2ad82f"
                         },
                         new
                         {
-                            UserId = "6add1ae4-c93d-425a-8be9-f0d107bab508",
-                            RoleId = "d389d55d-5f72-4fb7-afdd-f508fc8cd438"
+                            UserId = "46eb00ef-8997-40da-ab98-bc02a14c8db3",
+                            RoleId = "45d8d6fb-7280-437e-8270-2e6b89d15867"
                         });
                 });
 
@@ -391,13 +391,13 @@ namespace SweetCreativity.Core.Migrations
                             Id = 1,
                             CategoryId = 1,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 12, 12, 1, 57, 8, 359, DateTimeKind.Local).AddTicks(5592),
+                            CreatedAtListing = new DateTime(2023, 12, 12, 20, 40, 38, 234, DateTimeKind.Local).AddTicks(9534),
                             Description = " Це відомий і популярний торт, який складається з тонких шарів бісквіту і вершкового крему.",
                             Location = "Lviv",
                             Price = 165,
                             Product = "Борошно, вершкове масло, яйця, оцет, цукор, ванільний цукор або ванільний екстракт, кукурудзяний крохмаль, вершки, сіль, прикраси (за бажанням).",
                             Title = "Торт Наполеон",
-                            UserId = "5a752c09-cf8f-4142-9a90-9f3a84a59ddd",
+                            UserId = "ce21d04c-a441-4c40-adb1-7a0d325b112f",
                             Weight = 1000
                         },
                         new
@@ -405,13 +405,13 @@ namespace SweetCreativity.Core.Migrations
                             Id = 2,
                             CategoryId = 2,
                             CoverPath = "\\img\\listing\\no_cover.jpg",
-                            CreatedAtListing = new DateTime(2023, 12, 12, 1, 57, 8, 359, DateTimeKind.Local).AddTicks(5682),
+                            CreatedAtListing = new DateTime(2023, 12, 12, 20, 40, 38, 234, DateTimeKind.Local).AddTicks(9603),
                             Description = "Гармонійне поєднання повітряного шоколадного тіста мафіну з ніжно-солодкою вершковою начинкою.",
                             Location = "Rivne",
                             Price = 180,
                             Product = "Борошно пшеничне, цукор-пісок, суміш “Мафін шоколадний”, олія рослинна, меланж, вода. Начинка: згущене молоко “Іриска”з вершками.",
                             Title = "Мафіни",
-                            UserId = "06b8dc0e-e41e-4b05-88ea-de5b83310991",
+                            UserId = "4bcea3b6-fd74-47b9-8c46-70908bd4afce",
                             Weight = 80
                         });
                 });
@@ -469,26 +469,26 @@ namespace SweetCreativity.Core.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAtOrder = new DateTime(2023, 12, 12, 1, 57, 8, 359, DateTimeKind.Local).AddTicks(5904),
+                            CreatedAtOrder = new DateTime(2023, 12, 12, 20, 40, 38, 234, DateTimeKind.Local).AddTicks(9666),
                             CustomerNumber = 985684335,
                             ListingId = 1,
                             NameOrder = "Торт Наполеон",
                             PriceOne = 0m,
                             Quantity = 1,
                             TotalPrice = 250m,
-                            UserId = "6add1ae4-c93d-425a-8be9-f0d107bab508"
+                            UserId = "46eb00ef-8997-40da-ab98-bc02a14c8db3"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAtOrder = new DateTime(2023, 12, 12, 1, 57, 8, 359, DateTimeKind.Local).AddTicks(5915),
+                            CreatedAtOrder = new DateTime(2023, 12, 12, 20, 40, 38, 234, DateTimeKind.Local).AddTicks(9673),
                             CustomerNumber = 985688735,
                             ListingId = 2,
                             NameOrder = "Торт Спартак",
                             PriceOne = 0m,
                             Quantity = 1,
                             TotalPrice = 400m,
-                            UserId = "06b8dc0e-e41e-4b05-88ea-de5b83310991"
+                            UserId = "4bcea3b6-fd74-47b9-8c46-70908bd4afce"
                         });
                 });
 
@@ -607,7 +607,6 @@ namespace SweetCreativity.Core.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -627,7 +626,7 @@ namespace SweetCreativity.Core.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhoneNumber")
+                    b.Property<int?>("PhoneNumber")
                         .HasColumnType("int");
 
                     b.Property<bool>("PhoneNumberConfirmed")
@@ -640,11 +639,9 @@ namespace SweetCreativity.Core.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UrlSocialnetwork")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -663,9 +660,9 @@ namespace SweetCreativity.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "06b8dc0e-e41e-4b05-88ea-de5b83310991",
+                            Id = "4bcea3b6-fd74-47b9-8c46-70908bd4afce",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a0848d06-29a5-4b8d-a6de-8f98985998ad",
+                            ConcurrencyStamp = "4ebd8fa0-a8d5-439e-b36e-8631e5521b3f",
                             CoverPath = "\\img\\user\\no_cover.jpg",
                             Email = "taniabondar@gmail.com",
                             EmailConfirmed = true,
@@ -673,19 +670,19 @@ namespace SweetCreativity.Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TANIABONDAR@GMAIL.COM",
                             NormalizedUserName = "TANIABONDAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHPdU4QsFjXwSBE0q6Vo4mWwrMtrnuXvO6k53/HWsXaRGJnzBlVYpRFJJRq6GLOd6A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBAUk6B/piIW7RA/o49zqUO/eOuHbvqoiK6+qhZOOc8WQDqHqaWK+ylFvK7LQ0YyUQ==",
                             PhoneNumber = 985674335,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ae009c3d-44de-4266-b284-155afb95464c",
+                            SecurityStamp = "cb65eadf-7a40-438d-8374-81914b2f565e",
                             TwoFactorEnabled = false,
                             UrlSocialnetwork = "@taniabondar23",
                             UserName = "taniabondar@gmail.com"
                         },
                         new
                         {
-                            Id = "6add1ae4-c93d-425a-8be9-f0d107bab508",
+                            Id = "46eb00ef-8997-40da-ab98-bc02a14c8db3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "80b4edb2-2b68-4829-8767-7bc00d500832",
+                            ConcurrencyStamp = "e522eb64-ec9f-41ee-b1ab-91b7394cfd85",
                             CoverPath = "\\img\\user\\no_cover.jpg",
                             Email = "olenatkachuk@gmail.com",
                             EmailConfirmed = true,
@@ -693,19 +690,19 @@ namespace SweetCreativity.Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "OLENATKACHUK@GMAIL.COM",
                             NormalizedUserName = "OLENATKACHUK@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBfOO9dDFm/71/V41mwY4nWuytdQL3pZYry3IYJJwU8vjXVU4lmcN58ThZCpr+W5Uw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJKViv/zX3oHlfEFGqj+d7eJtPB0H3Fiv8vDR34ZfiFKI6fl0zXBwI0Q18lbUBeh6g==",
                             PhoneNumber = 986390482,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ad744519-b35f-4da1-be40-87d811494c1a",
+                            SecurityStamp = "a6a116c9-a3f1-4d97-92de-f18659d79edd",
                             TwoFactorEnabled = false,
                             UrlSocialnetwork = "@olena_tkachuk",
                             UserName = "olenatkachuk@gmail.com"
                         },
                         new
                         {
-                            Id = "5a752c09-cf8f-4142-9a90-9f3a84a59ddd",
+                            Id = "ce21d04c-a441-4c40-adb1-7a0d325b112f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8aec203c-fd8e-4db3-8f9b-eef66ed1285f",
+                            ConcurrencyStamp = "961bff1e-9806-498e-9a70-6ba313088239",
                             CoverPath = "\\img\\user\\no_cover.jpg",
                             Email = "melnykadrian@gmail.com",
                             EmailConfirmed = true,
@@ -713,10 +710,10 @@ namespace SweetCreativity.Core.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MELNYKADRIAN@GMAIL.COM",
                             NormalizedUserName = "MELNYKADRIAN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBQWe+iI5DrVYaDQK4F2i7ijXs8HmOmFYwdL9Ypge4JO0SKTtU7Vx3mH/2CAChCQBQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJmwLzv9ixIfglZ72QaOxP8rCcP0w7PzI4S1F83kTAao7eYskL/OsvtSU2RwQJRkdQ==",
                             PhoneNumber = 984568310,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0465aba-ec79-493e-b592-050dd78fd49b",
+                            SecurityStamp = "df7a9790-37f0-441b-b688-1fa0ca81055c",
                             TwoFactorEnabled = false,
                             UrlSocialnetwork = "@adriannmelnykk",
                             UserName = "melnykadrian@gmail.com"
